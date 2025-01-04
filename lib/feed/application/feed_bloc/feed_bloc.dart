@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/infrastructure/exceptions.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
+import 'package:test_appifylab/feed/infrastructure/dtos/reaction_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/feed_repository.dart';
 
 part 'feed_event.dart';
@@ -14,6 +16,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     on<FeedEvent>((event, emit) async {
       await event.map(
         loaded: (event) async => await _onLoaded(event, emit),
+        reacted: (event) async => await _onReacted(event, emit),
       );
     });
   }
@@ -33,5 +36,26 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     } on AppException catch (e) {
       emit(FeedState.loadFailure(state.items, e));
     }
+  }
+
+  Future<void> _onReacted(_Reacted event, Emitter<FeedState> emit) async {
+    emit(state.copyWith(
+      items: state.items
+          .mapIndexed((index, e) => index == event.index
+              ? e.copyWith(
+                  likeCount: event.reaction.totalReactions,
+                  likeType: event.reaction.likeType,
+                  like: event.reaction.likeType != null &&
+                          event.reaction.likeType!.isNotEmpty &&
+                          event.reaction.totalReactions! >= e.likeCount!
+                      ? LikeDTO(
+                          reactionType:
+                              event.reaction.likeType?.first.reactionType,
+                        )
+                      : null,
+                )
+              : e)
+          .toList(),
+    ));
   }
 }

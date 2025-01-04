@@ -55,20 +55,27 @@ class FeedPage extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           sliver: SliverList.builder(
                             itemBuilder: (context, index) => state.map(
-                              initial: (data) =>
-                                  FeedPost(post: data.items[index]),
+                              initial: (data) => FeedPost(
+                                  post: data.items[index], index: index),
                               loadInProgress: (data) {
                                 if (index < data.items.length) {
-                                  return FeedPost(post: data.items[index]);
+                                  return FeedPost(
+                                    post: data.items[index],
+                                    index: index,
+                                  );
                                 }
                                 return Center(
                                   child: CircularProgressIndicator(),
                                 );
                               },
-                              loadSuccess: (data) =>
-                                  FeedPost(post: data.items[index]),
-                              loadFailure: (data) =>
-                                  FeedPost(post: data.items[index]),
+                              loadSuccess: (data) => FeedPost(
+                                post: data.items[index],
+                                index: index,
+                              ),
+                              loadFailure: (data) => FeedPost(
+                                post: data.items[index],
+                                index: index,
+                              ),
                             ),
                             itemCount: state.map(
                               initial: (data) => 0,

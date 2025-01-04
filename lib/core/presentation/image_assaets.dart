@@ -21,7 +21,7 @@ class ImageAssets {
   static String get angry => 'angry'.svg;
 }
 
-extension on String {
+extension ImageAssetsExtension on String {
   String get svg => 'assets/images/$this.svg';
   String get png => 'assets/images/$this.png';
 }

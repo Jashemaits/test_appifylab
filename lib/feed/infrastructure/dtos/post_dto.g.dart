@@ -15,7 +15,7 @@ _$PostDTOImpl _$$PostDTOImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       fileType: json['file_type'] as String?,
       files: (json['files'] as List<dynamic>?)
-          ?.map((e) => FileElement.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => FileElementDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
       likeCount: (json['like_count'] as num?)?.toInt(),
       commentCount: (json['comment_count'] as num?)?.toInt(),
@@ -27,7 +27,9 @@ _$PostDTOImpl _$$PostDTOImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       pic: json['pic'] as String?,
       uid: (json['uid'] as num?)?.toInt(),
-      like: json['like'],
+      like: json['like'] == null
+          ? null
+          : LikeDTO.fromJson(json['like'] as Map<String, dynamic>),
       likeType: (json['likeType'] as List<dynamic>?)
           ?.map((e) => LikeType.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -56,8 +58,8 @@ Map<String, dynamic> _$$PostDTOImplToJson(_$PostDTOImpl instance) =>
       'comments': instance.comments,
     };
 
-_$FileElementImpl _$$FileElementImplFromJson(Map<String, dynamic> json) =>
-    _$FileElementImpl(
+_$FileElementDTOImpl _$$FileElementDTOImplFromJson(Map<String, dynamic> json) =>
+    _$FileElementDTOImpl(
       fileLoc: json['fileLoc'] as String?,
       originalName: json['originalName'] as String?,
       extname: json['extname'] as String?,
@@ -65,7 +67,8 @@ _$FileElementImpl _$$FileElementImplFromJson(Map<String, dynamic> json) =>
       size: (json['size'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$FileElementImplToJson(_$FileElementImpl instance) =>
+Map<String, dynamic> _$$FileElementDTOImplToJson(
+        _$FileElementDTOImpl instance) =>
     <String, dynamic>{
       'fileLoc': instance.fileLoc,
       'originalName': instance.originalName,
@@ -84,4 +87,26 @@ Map<String, dynamic> _$$LikeTypeImplToJson(_$LikeTypeImpl instance) =>
     <String, dynamic>{
       'reaction_type': instance.reactionType,
       'feed_id': instance.feedId,
+    };
+
+_$LikeDTOImpl _$$LikeDTOImplFromJson(Map<String, dynamic> json) =>
+    _$LikeDTOImpl(
+      id: (json['id'] as num?)?.toInt(),
+      feedId: (json['feed_id'] as num?)?.toInt(),
+      userId: (json['user_id'] as num?)?.toInt(),
+      reactionType: json['reaction_type'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      isAnonymous: (json['is_anonymous'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$$LikeDTOImplToJson(_$LikeDTOImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'feed_id': instance.feedId,
+      'user_id': instance.userId,
+      'reaction_type': instance.reactionType,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'is_anonymous': instance.isAnonymous,
     };

@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FeedEvent {
-  int? get lastId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? lastId) loaded,
+    required TResult Function(int index, ReactionDTO reaction) reacted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? lastId)? loaded,
+    TResult? Function(int index, ReactionDTO reaction)? reacted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? lastId)? loaded,
+    TResult Function(int index, ReactionDTO reaction)? reacted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Reacted value) reacted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Reacted value)? reacted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Reacted value)? reacted,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of FeedEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FeedEventCopyWith<FeedEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +60,6 @@ mixin _$FeedEvent {
 abstract class $FeedEventCopyWith<$Res> {
   factory $FeedEventCopyWith(FeedEvent value, $Res Function(FeedEvent) then) =
       _$FeedEventCopyWithImpl<$Res, FeedEvent>;
-  @useResult
-  $Res call({int? lastId});
 }
 
 /// @nodoc
@@ -77,26 +74,13 @@ class _$FeedEventCopyWithImpl<$Res, $Val extends FeedEvent>
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lastId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      lastId: freezed == lastId
-          ? _value.lastId
-          : lastId // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> implements $FeedEventCopyWith<$Res> {
+abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int? lastId});
 }
@@ -161,6 +145,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? lastId) loaded,
+    required TResult Function(int index, ReactionDTO reaction) reacted,
   }) {
     return loaded(lastId);
   }
@@ -169,6 +154,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? lastId)? loaded,
+    TResult? Function(int index, ReactionDTO reaction)? reacted,
   }) {
     return loaded?.call(lastId);
   }
@@ -177,6 +163,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? lastId)? loaded,
+    TResult Function(int index, ReactionDTO reaction)? reacted,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -189,6 +176,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Reacted value) reacted,
   }) {
     return loaded(this);
   }
@@ -197,6 +185,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Reacted value)? reacted,
   }) {
     return loaded?.call(this);
   }
@@ -205,6 +194,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_Reacted value)? reacted,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -217,14 +207,175 @@ class _$LoadedImpl implements _Loaded {
 abstract class _Loaded implements FeedEvent {
   const factory _Loaded(final int? lastId) = _$LoadedImpl;
 
-  @override
   int? get lastId;
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReactedImplCopyWith<$Res> {
+  factory _$$ReactedImplCopyWith(
+          _$ReactedImpl value, $Res Function(_$ReactedImpl) then) =
+      __$$ReactedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index, ReactionDTO reaction});
+
+  $ReactionDTOCopyWith<$Res> get reaction;
+}
+
+/// @nodoc
+class __$$ReactedImplCopyWithImpl<$Res>
+    extends _$FeedEventCopyWithImpl<$Res, _$ReactedImpl>
+    implements _$$ReactedImplCopyWith<$Res> {
+  __$$ReactedImplCopyWithImpl(
+      _$ReactedImpl _value, $Res Function(_$ReactedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+    Object? reaction = null,
+  }) {
+    return _then(_$ReactedImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == reaction
+          ? _value.reaction
+          : reaction // ignore: cast_nullable_to_non_nullable
+              as ReactionDTO,
+    ));
+  }
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReactionDTOCopyWith<$Res> get reaction {
+    return $ReactionDTOCopyWith<$Res>(_value.reaction, (value) {
+      return _then(_value.copyWith(reaction: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ReactedImpl implements _Reacted {
+  const _$ReactedImpl(this.index, this.reaction);
+
+  @override
+  final int index;
+  @override
+  final ReactionDTO reaction;
+
+  @override
+  String toString() {
+    return 'FeedEvent.reacted(index: $index, reaction: $reaction)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReactedImpl &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.reaction, reaction) ||
+                other.reaction == reaction));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index, reaction);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReactedImplCopyWith<_$ReactedImpl> get copyWith =>
+      __$$ReactedImplCopyWithImpl<_$ReactedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? lastId) loaded,
+    required TResult Function(int index, ReactionDTO reaction) reacted,
+  }) {
+    return reacted(index, reaction);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? lastId)? loaded,
+    TResult? Function(int index, ReactionDTO reaction)? reacted,
+  }) {
+    return reacted?.call(index, reaction);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? lastId)? loaded,
+    TResult Function(int index, ReactionDTO reaction)? reacted,
+    required TResult orElse(),
+  }) {
+    if (reacted != null) {
+      return reacted(index, reaction);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Reacted value) reacted,
+  }) {
+    return reacted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Reacted value)? reacted,
+  }) {
+    return reacted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Reacted value)? reacted,
+    required TResult orElse(),
+  }) {
+    if (reacted != null) {
+      return reacted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reacted implements FeedEvent {
+  const factory _Reacted(final int index, final ReactionDTO reaction) =
+      _$ReactedImpl;
+
+  int get index;
+  ReactionDTO get reaction;
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ReactedImplCopyWith<_$ReactedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

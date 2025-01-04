@@ -33,7 +33,7 @@ mixin _$PostDTO {
   @JsonKey(name: "file_type")
   String? get fileType => throw _privateConstructorUsedError;
   @JsonKey(name: "files")
-  List<FileElement>? get files => throw _privateConstructorUsedError;
+  List<FileElementDTO>? get files => throw _privateConstructorUsedError;
   @JsonKey(name: "like_count")
   int? get likeCount => throw _privateConstructorUsedError;
   @JsonKey(name: "comment_count")
@@ -51,7 +51,7 @@ mixin _$PostDTO {
   @JsonKey(name: "uid")
   int? get uid => throw _privateConstructorUsedError;
   @JsonKey(name: "like")
-  dynamic get like => throw _privateConstructorUsedError;
+  LikeDTO? get like => throw _privateConstructorUsedError;
   @JsonKey(name: "likeType")
   List<LikeType>? get likeType => throw _privateConstructorUsedError;
   @JsonKey(name: "comments")
@@ -78,7 +78,7 @@ abstract class $PostDTOCopyWith<$Res> {
       @JsonKey(name: "slug") String? slug,
       @JsonKey(name: "title") String? title,
       @JsonKey(name: "file_type") String? fileType,
-      @JsonKey(name: "files") List<FileElement>? files,
+      @JsonKey(name: "files") List<FileElementDTO>? files,
       @JsonKey(name: "like_count") int? likeCount,
       @JsonKey(name: "comment_count") int? commentCount,
       @JsonKey(name: "is_background") int? isBackground,
@@ -87,9 +87,11 @@ abstract class $PostDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "pic") String? pic,
       @JsonKey(name: "uid") int? uid,
-      @JsonKey(name: "like") dynamic like,
+      @JsonKey(name: "like") LikeDTO? like,
       @JsonKey(name: "likeType") List<LikeType>? likeType,
       @JsonKey(name: "comments") List<dynamic>? comments});
+
+  $LikeDTOCopyWith<$Res>? get like;
 }
 
 /// @nodoc
@@ -154,7 +156,7 @@ class _$PostDTOCopyWithImpl<$Res, $Val extends PostDTO>
       files: freezed == files
           ? _value.files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<FileElement>?,
+              as List<FileElementDTO>?,
       likeCount: freezed == likeCount
           ? _value.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
@@ -190,7 +192,7 @@ class _$PostDTOCopyWithImpl<$Res, $Val extends PostDTO>
       like: freezed == like
           ? _value.like
           : like // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as LikeDTO?,
       likeType: freezed == likeType
           ? _value.likeType
           : likeType // ignore: cast_nullable_to_non_nullable
@@ -200,6 +202,20 @@ class _$PostDTOCopyWithImpl<$Res, $Val extends PostDTO>
           : comments // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
     ) as $Val);
+  }
+
+  /// Create a copy of PostDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LikeDTOCopyWith<$Res>? get like {
+    if (_value.like == null) {
+      return null;
+    }
+
+    return $LikeDTOCopyWith<$Res>(_value.like!, (value) {
+      return _then(_value.copyWith(like: value) as $Val);
+    });
   }
 }
 
@@ -217,7 +233,7 @@ abstract class _$$PostDTOImplCopyWith<$Res> implements $PostDTOCopyWith<$Res> {
       @JsonKey(name: "slug") String? slug,
       @JsonKey(name: "title") String? title,
       @JsonKey(name: "file_type") String? fileType,
-      @JsonKey(name: "files") List<FileElement>? files,
+      @JsonKey(name: "files") List<FileElementDTO>? files,
       @JsonKey(name: "like_count") int? likeCount,
       @JsonKey(name: "comment_count") int? commentCount,
       @JsonKey(name: "is_background") int? isBackground,
@@ -226,9 +242,12 @@ abstract class _$$PostDTOImplCopyWith<$Res> implements $PostDTOCopyWith<$Res> {
       @JsonKey(name: "name") String? name,
       @JsonKey(name: "pic") String? pic,
       @JsonKey(name: "uid") int? uid,
-      @JsonKey(name: "like") dynamic like,
+      @JsonKey(name: "like") LikeDTO? like,
       @JsonKey(name: "likeType") List<LikeType>? likeType,
       @JsonKey(name: "comments") List<dynamic>? comments});
+
+  @override
+  $LikeDTOCopyWith<$Res>? get like;
 }
 
 /// @nodoc
@@ -291,7 +310,7 @@ class __$$PostDTOImplCopyWithImpl<$Res>
       files: freezed == files
           ? _value._files
           : files // ignore: cast_nullable_to_non_nullable
-              as List<FileElement>?,
+              as List<FileElementDTO>?,
       likeCount: freezed == likeCount
           ? _value.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
@@ -327,7 +346,7 @@ class __$$PostDTOImplCopyWithImpl<$Res>
       like: freezed == like
           ? _value.like
           : like // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as LikeDTO?,
       likeType: freezed == likeType
           ? _value._likeType
           : likeType // ignore: cast_nullable_to_non_nullable
@@ -350,7 +369,7 @@ class _$PostDTOImpl implements _PostDTO {
       @JsonKey(name: "slug") this.slug,
       @JsonKey(name: "title") this.title,
       @JsonKey(name: "file_type") this.fileType,
-      @JsonKey(name: "files") final List<FileElement>? files,
+      @JsonKey(name: "files") final List<FileElementDTO>? files,
       @JsonKey(name: "like_count") this.likeCount,
       @JsonKey(name: "comment_count") this.commentCount,
       @JsonKey(name: "is_background") this.isBackground,
@@ -387,10 +406,10 @@ class _$PostDTOImpl implements _PostDTO {
   @override
   @JsonKey(name: "file_type")
   final String? fileType;
-  final List<FileElement>? _files;
+  final List<FileElementDTO>? _files;
   @override
   @JsonKey(name: "files")
-  List<FileElement>? get files {
+  List<FileElementDTO>? get files {
     final value = _files;
     if (value == null) return null;
     if (_files is EqualUnmodifiableListView) return _files;
@@ -424,7 +443,7 @@ class _$PostDTOImpl implements _PostDTO {
   final int? uid;
   @override
   @JsonKey(name: "like")
-  final dynamic like;
+  final LikeDTO? like;
   final List<LikeType>? _likeType;
   @override
   @JsonKey(name: "likeType")
@@ -477,7 +496,7 @@ class _$PostDTOImpl implements _PostDTO {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.pic, pic) || other.pic == pic) &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            const DeepCollectionEquality().equals(other.like, like) &&
+            (identical(other.like, like) || other.like == like) &&
             const DeepCollectionEquality().equals(other._likeType, _likeType) &&
             const DeepCollectionEquality().equals(other._comments, _comments));
   }
@@ -501,7 +520,7 @@ class _$PostDTOImpl implements _PostDTO {
       name,
       pic,
       uid,
-      const DeepCollectionEquality().hash(like),
+      like,
       const DeepCollectionEquality().hash(_likeType),
       const DeepCollectionEquality().hash(_comments));
 
@@ -529,7 +548,7 @@ abstract class _PostDTO implements PostDTO {
           @JsonKey(name: "slug") final String? slug,
           @JsonKey(name: "title") final String? title,
           @JsonKey(name: "file_type") final String? fileType,
-          @JsonKey(name: "files") final List<FileElement>? files,
+          @JsonKey(name: "files") final List<FileElementDTO>? files,
           @JsonKey(name: "like_count") final int? likeCount,
           @JsonKey(name: "comment_count") final int? commentCount,
           @JsonKey(name: "is_background") final int? isBackground,
@@ -538,7 +557,7 @@ abstract class _PostDTO implements PostDTO {
           @JsonKey(name: "name") final String? name,
           @JsonKey(name: "pic") final String? pic,
           @JsonKey(name: "uid") final int? uid,
-          @JsonKey(name: "like") final dynamic like,
+          @JsonKey(name: "like") final LikeDTO? like,
           @JsonKey(name: "likeType") final List<LikeType>? likeType,
           @JsonKey(name: "comments") final List<dynamic>? comments}) =
       _$PostDTOImpl;
@@ -565,7 +584,7 @@ abstract class _PostDTO implements PostDTO {
   String? get fileType;
   @override
   @JsonKey(name: "files")
-  List<FileElement>? get files;
+  List<FileElementDTO>? get files;
   @override
   @JsonKey(name: "like_count")
   int? get likeCount;
@@ -592,7 +611,7 @@ abstract class _PostDTO implements PostDTO {
   int? get uid;
   @override
   @JsonKey(name: "like")
-  dynamic get like;
+  LikeDTO? get like;
   @override
   @JsonKey(name: "likeType")
   List<LikeType>? get likeType;
@@ -608,12 +627,12 @@ abstract class _PostDTO implements PostDTO {
       throw _privateConstructorUsedError;
 }
 
-FileElement _$FileElementFromJson(Map<String, dynamic> json) {
-  return _FileElement.fromJson(json);
+FileElementDTO _$FileElementDTOFromJson(Map<String, dynamic> json) {
+  return _FileElementDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FileElement {
+mixin _$FileElementDTO {
   @JsonKey(name: "fileLoc")
   String? get fileLoc => throw _privateConstructorUsedError;
   @JsonKey(name: "originalName")
@@ -625,21 +644,21 @@ mixin _$FileElement {
   @JsonKey(name: "size")
   int? get size => throw _privateConstructorUsedError;
 
-  /// Serializes this FileElement to a JSON map.
+  /// Serializes this FileElementDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of FileElement
+  /// Create a copy of FileElementDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FileElementCopyWith<FileElement> get copyWith =>
+  $FileElementDTOCopyWith<FileElementDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FileElementCopyWith<$Res> {
-  factory $FileElementCopyWith(
-          FileElement value, $Res Function(FileElement) then) =
-      _$FileElementCopyWithImpl<$Res, FileElement>;
+abstract class $FileElementDTOCopyWith<$Res> {
+  factory $FileElementDTOCopyWith(
+          FileElementDTO value, $Res Function(FileElementDTO) then) =
+      _$FileElementDTOCopyWithImpl<$Res, FileElementDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: "fileLoc") String? fileLoc,
@@ -650,16 +669,16 @@ abstract class $FileElementCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FileElementCopyWithImpl<$Res, $Val extends FileElement>
-    implements $FileElementCopyWith<$Res> {
-  _$FileElementCopyWithImpl(this._value, this._then);
+class _$FileElementDTOCopyWithImpl<$Res, $Val extends FileElementDTO>
+    implements $FileElementDTOCopyWith<$Res> {
+  _$FileElementDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FileElement
+  /// Create a copy of FileElementDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -696,11 +715,11 @@ class _$FileElementCopyWithImpl<$Res, $Val extends FileElement>
 }
 
 /// @nodoc
-abstract class _$$FileElementImplCopyWith<$Res>
-    implements $FileElementCopyWith<$Res> {
-  factory _$$FileElementImplCopyWith(
-          _$FileElementImpl value, $Res Function(_$FileElementImpl) then) =
-      __$$FileElementImplCopyWithImpl<$Res>;
+abstract class _$$FileElementDTOImplCopyWith<$Res>
+    implements $FileElementDTOCopyWith<$Res> {
+  factory _$$FileElementDTOImplCopyWith(_$FileElementDTOImpl value,
+          $Res Function(_$FileElementDTOImpl) then) =
+      __$$FileElementDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -712,14 +731,14 @@ abstract class _$$FileElementImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FileElementImplCopyWithImpl<$Res>
-    extends _$FileElementCopyWithImpl<$Res, _$FileElementImpl>
-    implements _$$FileElementImplCopyWith<$Res> {
-  __$$FileElementImplCopyWithImpl(
-      _$FileElementImpl _value, $Res Function(_$FileElementImpl) _then)
+class __$$FileElementDTOImplCopyWithImpl<$Res>
+    extends _$FileElementDTOCopyWithImpl<$Res, _$FileElementDTOImpl>
+    implements _$$FileElementDTOImplCopyWith<$Res> {
+  __$$FileElementDTOImplCopyWithImpl(
+      _$FileElementDTOImpl _value, $Res Function(_$FileElementDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FileElement
+  /// Create a copy of FileElementDTO
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -730,7 +749,7 @@ class __$$FileElementImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? size = freezed,
   }) {
-    return _then(_$FileElementImpl(
+    return _then(_$FileElementDTOImpl(
       fileLoc: freezed == fileLoc
           ? _value.fileLoc
           : fileLoc // ignore: cast_nullable_to_non_nullable
@@ -757,16 +776,16 @@ class __$$FileElementImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FileElementImpl implements _FileElement {
-  const _$FileElementImpl(
+class _$FileElementDTOImpl implements _FileElementDTO {
+  const _$FileElementDTOImpl(
       {@JsonKey(name: "fileLoc") this.fileLoc,
       @JsonKey(name: "originalName") this.originalName,
       @JsonKey(name: "extname") this.extname,
       @JsonKey(name: "type") this.type,
       @JsonKey(name: "size") this.size});
 
-  factory _$FileElementImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FileElementImplFromJson(json);
+  factory _$FileElementDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FileElementDTOImplFromJson(json);
 
   @override
   @JsonKey(name: "fileLoc")
@@ -786,14 +805,14 @@ class _$FileElementImpl implements _FileElement {
 
   @override
   String toString() {
-    return 'FileElement(fileLoc: $fileLoc, originalName: $originalName, extname: $extname, type: $type, size: $size)';
+    return 'FileElementDTO(fileLoc: $fileLoc, originalName: $originalName, extname: $extname, type: $type, size: $size)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FileElementImpl &&
+            other is _$FileElementDTOImpl &&
             (identical(other.fileLoc, fileLoc) || other.fileLoc == fileLoc) &&
             (identical(other.originalName, originalName) ||
                 other.originalName == originalName) &&
@@ -807,32 +826,33 @@ class _$FileElementImpl implements _FileElement {
   int get hashCode =>
       Object.hash(runtimeType, fileLoc, originalName, extname, type, size);
 
-  /// Create a copy of FileElement
+  /// Create a copy of FileElementDTO
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FileElementImplCopyWith<_$FileElementImpl> get copyWith =>
-      __$$FileElementImplCopyWithImpl<_$FileElementImpl>(this, _$identity);
+  _$$FileElementDTOImplCopyWith<_$FileElementDTOImpl> get copyWith =>
+      __$$FileElementDTOImplCopyWithImpl<_$FileElementDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FileElementImplToJson(
+    return _$$FileElementDTOImplToJson(
       this,
     );
   }
 }
 
-abstract class _FileElement implements FileElement {
-  const factory _FileElement(
+abstract class _FileElementDTO implements FileElementDTO {
+  const factory _FileElementDTO(
       {@JsonKey(name: "fileLoc") final String? fileLoc,
       @JsonKey(name: "originalName") final String? originalName,
       @JsonKey(name: "extname") final String? extname,
       @JsonKey(name: "type") final String? type,
-      @JsonKey(name: "size") final int? size}) = _$FileElementImpl;
+      @JsonKey(name: "size") final int? size}) = _$FileElementDTOImpl;
 
-  factory _FileElement.fromJson(Map<String, dynamic> json) =
-      _$FileElementImpl.fromJson;
+  factory _FileElementDTO.fromJson(Map<String, dynamic> json) =
+      _$FileElementDTOImpl.fromJson;
 
   @override
   @JsonKey(name: "fileLoc")
@@ -850,11 +870,11 @@ abstract class _FileElement implements FileElement {
   @JsonKey(name: "size")
   int? get size;
 
-  /// Create a copy of FileElement
+  /// Create a copy of FileElementDTO
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FileElementImplCopyWith<_$FileElementImpl> get copyWith =>
+  _$$FileElementDTOImplCopyWith<_$FileElementDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1034,5 +1054,300 @@ abstract class _LikeType implements LikeType {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LikeTypeImplCopyWith<_$LikeTypeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+LikeDTO _$LikeDTOFromJson(Map<String, dynamic> json) {
+  return _LikeDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LikeDTO {
+  @JsonKey(name: "id")
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: "feed_id")
+  int? get feedId => throw _privateConstructorUsedError;
+  @JsonKey(name: "user_id")
+  int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "reaction_type")
+  String? get reactionType => throw _privateConstructorUsedError;
+  @JsonKey(name: "created_at")
+  String? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "updated_at")
+  String? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: "is_anonymous")
+  int? get isAnonymous => throw _privateConstructorUsedError;
+
+  /// Serializes this LikeDTO to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of LikeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $LikeDTOCopyWith<LikeDTO> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LikeDTOCopyWith<$Res> {
+  factory $LikeDTOCopyWith(LikeDTO value, $Res Function(LikeDTO) then) =
+      _$LikeDTOCopyWithImpl<$Res, LikeDTO>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "feed_id") int? feedId,
+      @JsonKey(name: "user_id") int? userId,
+      @JsonKey(name: "reaction_type") String? reactionType,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "is_anonymous") int? isAnonymous});
+}
+
+/// @nodoc
+class _$LikeDTOCopyWithImpl<$Res, $Val extends LikeDTO>
+    implements $LikeDTOCopyWith<$Res> {
+  _$LikeDTOCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of LikeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? feedId = freezed,
+    Object? userId = freezed,
+    Object? reactionType = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? isAnonymous = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      feedId: freezed == feedId
+          ? _value.feedId
+          : feedId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reactionType: freezed == reactionType
+          ? _value.reactionType
+          : reactionType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isAnonymous: freezed == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LikeDTOImplCopyWith<$Res> implements $LikeDTOCopyWith<$Res> {
+  factory _$$LikeDTOImplCopyWith(
+          _$LikeDTOImpl value, $Res Function(_$LikeDTOImpl) then) =
+      __$$LikeDTOImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "id") int? id,
+      @JsonKey(name: "feed_id") int? feedId,
+      @JsonKey(name: "user_id") int? userId,
+      @JsonKey(name: "reaction_type") String? reactionType,
+      @JsonKey(name: "created_at") String? createdAt,
+      @JsonKey(name: "updated_at") String? updatedAt,
+      @JsonKey(name: "is_anonymous") int? isAnonymous});
+}
+
+/// @nodoc
+class __$$LikeDTOImplCopyWithImpl<$Res>
+    extends _$LikeDTOCopyWithImpl<$Res, _$LikeDTOImpl>
+    implements _$$LikeDTOImplCopyWith<$Res> {
+  __$$LikeDTOImplCopyWithImpl(
+      _$LikeDTOImpl _value, $Res Function(_$LikeDTOImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LikeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? feedId = freezed,
+    Object? userId = freezed,
+    Object? reactionType = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? isAnonymous = freezed,
+  }) {
+    return _then(_$LikeDTOImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      feedId: freezed == feedId
+          ? _value.feedId
+          : feedId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reactionType: freezed == reactionType
+          ? _value.reactionType
+          : reactionType // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isAnonymous: freezed == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LikeDTOImpl implements _LikeDTO {
+  const _$LikeDTOImpl(
+      {@JsonKey(name: "id") this.id,
+      @JsonKey(name: "feed_id") this.feedId,
+      @JsonKey(name: "user_id") this.userId,
+      @JsonKey(name: "reaction_type") this.reactionType,
+      @JsonKey(name: "created_at") this.createdAt,
+      @JsonKey(name: "updated_at") this.updatedAt,
+      @JsonKey(name: "is_anonymous") this.isAnonymous});
+
+  factory _$LikeDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LikeDTOImplFromJson(json);
+
+  @override
+  @JsonKey(name: "id")
+  final int? id;
+  @override
+  @JsonKey(name: "feed_id")
+  final int? feedId;
+  @override
+  @JsonKey(name: "user_id")
+  final int? userId;
+  @override
+  @JsonKey(name: "reaction_type")
+  final String? reactionType;
+  @override
+  @JsonKey(name: "created_at")
+  final String? createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  final String? updatedAt;
+  @override
+  @JsonKey(name: "is_anonymous")
+  final int? isAnonymous;
+
+  @override
+  String toString() {
+    return 'LikeDTO(id: $id, feedId: $feedId, userId: $userId, reactionType: $reactionType, createdAt: $createdAt, updatedAt: $updatedAt, isAnonymous: $isAnonymous)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeDTOImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.feedId, feedId) || other.feedId == feedId) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.reactionType, reactionType) ||
+                other.reactionType == reactionType) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.isAnonymous, isAnonymous) ||
+                other.isAnonymous == isAnonymous));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, feedId, userId, reactionType,
+      createdAt, updatedAt, isAnonymous);
+
+  /// Create a copy of LikeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeDTOImplCopyWith<_$LikeDTOImpl> get copyWith =>
+      __$$LikeDTOImplCopyWithImpl<_$LikeDTOImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LikeDTOImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LikeDTO implements LikeDTO {
+  const factory _LikeDTO(
+      {@JsonKey(name: "id") final int? id,
+      @JsonKey(name: "feed_id") final int? feedId,
+      @JsonKey(name: "user_id") final int? userId,
+      @JsonKey(name: "reaction_type") final String? reactionType,
+      @JsonKey(name: "created_at") final String? createdAt,
+      @JsonKey(name: "updated_at") final String? updatedAt,
+      @JsonKey(name: "is_anonymous") final int? isAnonymous}) = _$LikeDTOImpl;
+
+  factory _LikeDTO.fromJson(Map<String, dynamic> json) = _$LikeDTOImpl.fromJson;
+
+  @override
+  @JsonKey(name: "id")
+  int? get id;
+  @override
+  @JsonKey(name: "feed_id")
+  int? get feedId;
+  @override
+  @JsonKey(name: "user_id")
+  int? get userId;
+  @override
+  @JsonKey(name: "reaction_type")
+  String? get reactionType;
+  @override
+  @JsonKey(name: "created_at")
+  String? get createdAt;
+  @override
+  @JsonKey(name: "updated_at")
+  String? get updatedAt;
+  @override
+  @JsonKey(name: "is_anonymous")
+  int? get isAnonymous;
+
+  /// Create a copy of LikeDTO
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LikeDTOImplCopyWith<_$LikeDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

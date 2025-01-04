@@ -12,7 +12,7 @@ class PostDTO with _$PostDTO {
     @JsonKey(name: "slug") String? slug,
     @JsonKey(name: "title") String? title,
     @JsonKey(name: "file_type") String? fileType,
-    @JsonKey(name: "files") List<FileElement>? files,
+    @JsonKey(name: "files") List<FileElementDTO>? files,
     @JsonKey(name: "like_count") int? likeCount,
     @JsonKey(name: "comment_count") int? commentCount,
     @JsonKey(name: "is_background") int? isBackground,
@@ -21,7 +21,7 @@ class PostDTO with _$PostDTO {
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "pic") String? pic,
     @JsonKey(name: "uid") int? uid,
-    @JsonKey(name: "like") dynamic like,
+    @JsonKey(name: "like") LikeDTO? like,
     @JsonKey(name: "likeType") List<LikeType>? likeType,
     @JsonKey(name: "comments") List<dynamic>? comments,
   }) = _PostDTO;
@@ -31,17 +31,17 @@ class PostDTO with _$PostDTO {
 }
 
 @freezed
-class FileElement with _$FileElement {
-  const factory FileElement({
+class FileElementDTO with _$FileElementDTO {
+  const factory FileElementDTO({
     @JsonKey(name: "fileLoc") String? fileLoc,
     @JsonKey(name: "originalName") String? originalName,
     @JsonKey(name: "extname") String? extname,
     @JsonKey(name: "type") String? type,
     @JsonKey(name: "size") int? size,
-  }) = _FileElement;
+  }) = _FileElementDTO;
 
-  factory FileElement.fromJson(Map<String, dynamic> json) =>
-      _$FileElementFromJson(json);
+  factory FileElementDTO.fromJson(Map<String, dynamic> json) =>
+      _$FileElementDTOFromJson(json);
 }
 
 @freezed
@@ -53,4 +53,20 @@ class LikeType with _$LikeType {
 
   factory LikeType.fromJson(Map<String, dynamic> json) =>
       _$LikeTypeFromJson(json);
+}
+
+@freezed
+class LikeDTO with _$LikeDTO {
+  const factory LikeDTO({
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "feed_id") int? feedId,
+    @JsonKey(name: "user_id") int? userId,
+    @JsonKey(name: "reaction_type") String? reactionType,
+    @JsonKey(name: "created_at") String? createdAt,
+    @JsonKey(name: "updated_at") String? updatedAt,
+    @JsonKey(name: "is_anonymous") int? isAnonymous,
+  }) = _LikeDTO;
+
+  factory LikeDTO.fromJson(Map<String, dynamic> json) =>
+      _$LikeDTOFromJson(json);
 }
