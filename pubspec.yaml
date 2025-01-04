@@ -16,7 +16,10 @@ dependencies:
   json_annotation: ^4.9.0
   formz: ^0.8.0
   auto_route: ^9.2.2
-  get_it: ^8.0.2
+  get_it: ^8.0.3
+  dio: ^5.7.0
+  retrofit: ^4.4.2
+  shared_preferences: ^2.3.5
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +29,7 @@ dev_dependencies:
   freezed: ^2.5.7
   json_serializable: ^6.8.0
   auto_route_generator: ^9.0.0
+  retrofit_generator: ^9.1.7
 
 flutter:
   uses-material-design: true
