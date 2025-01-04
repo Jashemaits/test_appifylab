@@ -1,0 +1,41 @@
+targets:
+  $default:
+    builders:
+      freezed:freezed:
+        options:
+          enable_cached_builds: true
+        generate_for:
+          include:
+            - lib/**/application/**.dart
+            - lib/**/presentation/models/**.dart
+            - lib/**/domain/**.dart
+            - lib/**/infrastructure/**_dto.dart
+            - lib/**/shared/utils.dart
+      auto_route_generator:auto_route_generator:
+        options:
+          enable_cached_builds: true
+        generate_for:
+          include:
+            - lib/**/presentation/**_page.dart
+            - lib/core/presentation/file_picker_modal.dart
+      auto_route_generator:auto_router_generator: # this for @AutoRouterConfig
+        options:
+          enable_cached_builds: true
+        generate_for:
+          - lib/core/presentation/routes/app_router.dart
+      retrofit_generator:retrofit_generator:
+        options:
+          enable_cached_builds: true
+        generate_for:
+          include:
+            - lib/**/infrastructure/**_service.dart
+      riverpod_generator:riverpod_generator:
+        options:
+          enable_cached_builds: true
+        generate_for:
+          include:
+            - lib/**/shared/**_providers.dart
+            - lib/**/application/**_notifier.dart
+            - lib/**/application/**_provider.dart
+            - lib/**/application/**_providers.dart
+            - lib/core/application/keep_a_live_destroyer.dart
