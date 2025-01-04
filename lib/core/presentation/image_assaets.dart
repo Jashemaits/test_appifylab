@@ -5,6 +5,9 @@ class ImageAssets {
   static String get login_bg_top => 'login_bg_top'.svg;
   static String get login_bg_middle => 'login_bg_middle'.svg;
   static String get brand => 'brand'.svg;
+  static String get menu => 'menu'.svg;
+  static String get community => 'community'.svg;
+  static String get logout => 'logout'.svg;
 }
 
 extension on String {

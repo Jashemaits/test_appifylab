@@ -18,9 +18,12 @@ class AuthInterceptor extends Interceptor {
     final modifiedOptions = options
       ..headers.addAll(
         _authDTO == null
-            ? {}
+            ? {
+                'Content-Type': 'application/json',
+              }
             : {
                 'Authorization': '${_authDTO!.type} ${_authDTO!.token}',
+                'Content-Type': 'application/json',
               },
       );
     handler.next(modifiedOptions);

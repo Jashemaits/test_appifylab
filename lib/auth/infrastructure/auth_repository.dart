@@ -34,4 +34,11 @@ class AuthRepository {
   Future<void> saveAuth(AuthDTO auth) async {
     await _localService.saveResponse(auth);
   }
+
+  Future<void> signOut() async {
+    try {
+      await _apiService.logout();
+    } catch (_) {}
+    await _localService.clear();
+  }
 }

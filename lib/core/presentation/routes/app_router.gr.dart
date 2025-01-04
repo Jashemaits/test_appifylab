@@ -10,6 +10,25 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [FeedPage]
+class FeedRoute extends PageRouteInfo<void> {
+  const FeedRoute({List<PageRouteInfo>? children})
+      : super(
+          FeedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FeedPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -43,6 +62,25 @@ class SignInRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SignInPage();
+    },
+  );
+}
+
+/// generated route for
+/// [SignOutPage]
+class SignOutRoute extends PageRouteInfo<void> {
+  const SignOutRoute({List<PageRouteInfo>? children})
+      : super(
+          SignOutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignOutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SignOutPage();
     },
   );
 }

@@ -36,7 +36,7 @@ Future<void> setupServiceLocator() async {
       final dio = Dio();
       dio.options.baseUrl = kBaseURL;
       dio.options.headers["Content-Type"] = "application/json";
-      dio.interceptors.add(di());
+      dio.interceptors.add(di.get<AuthInterceptor>());
       return dio;
     }, instanceName: kAuthDio);
 }

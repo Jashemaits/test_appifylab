@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
+import 'package:test_appifylab/core/presentation/app_colors.dart';
 import 'package:test_appifylab/core/presentation/gaps.dart';
 import 'package:test_appifylab/core/presentation/image_assaets.dart';
 import 'package:test_appifylab/core/presentation/styles.dart';
@@ -26,7 +27,7 @@ class SignInPage extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         extendBody: true,
-        backgroundColor: Color.fromRGBO(17, 92, 103, 1),
+        backgroundColor: AppColors.primary,
         body: BlocListener<SignInBloc, SignInState>(
           listener: (context, state) {
             if (state.status == FormzSubmissionStatus.failure) {
@@ -128,7 +129,7 @@ class SignInPage extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
-                                        color: Color.fromRGBO(9, 86, 97, 1),
+                                        color: AppColors.text,
                                       ),
                                     ),
                                 ],
