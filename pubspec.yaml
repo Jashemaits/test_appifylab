@@ -20,6 +20,10 @@ dependencies:
   dio: ^5.7.0
   retrofit: ^4.4.2
   shared_preferences: ^2.3.5
+  cached_network_image: ^3.4.1
+  flutter_reaction_button: ^3.0.0+3
+  jiffy: ^6.3.2
+  collection: ^1.19.0
 
 dev_dependencies:
   flutter_test:

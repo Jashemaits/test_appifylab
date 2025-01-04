@@ -8,6 +8,8 @@ import 'package:test_appifylab/auth/infrastructure/auth_local_service.dart';
 import 'package:test_appifylab/auth/infrastructure/auth_repository.dart';
 import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/presentation/routes/app_router.dart';
+import 'package:test_appifylab/feed/infrastructure/feed_api_service.dart';
+import 'package:test_appifylab/feed/infrastructure/feed_repository.dart';
 
 final di = GetIt.instance;
 final String kAuthDio = 'authDio';
@@ -38,5 +40,9 @@ Future<void> setupServiceLocator() async {
       dio.options.headers["Content-Type"] = "application/json";
       dio.interceptors.add(di.get<AuthInterceptor>());
       return dio;
-    }, instanceName: kAuthDio);
+    }, instanceName: kAuthDio)
+    ..registerFactory(() => FeedApiService(di(instanceName: kAuthDio)))
+    ..registerFactory(() => FeedRepository(
+          apiService: di(),
+        ));
 }

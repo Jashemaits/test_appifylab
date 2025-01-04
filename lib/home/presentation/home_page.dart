@@ -13,12 +13,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      backgroundColor: Color.fromRGBO(243, 243, 243, 1),
       homeIndex: 0,
       routes: [
         FeedRoute(),
       ],
       appBarBuilder: (context, tabsRouter) => AppBar(
         toolbarHeight: kToolbarHeight + 20,
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.primary,
         title: Row(
           children: [
@@ -54,7 +56,7 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBuilder: (context, tabsRouter) => Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color.fromRGBO(242, 244, 247, 1),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha(15),
@@ -64,6 +66,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
         child: BottomNavigationBar(
+          backgroundColor: Color.fromRGBO(242, 244, 247, 1),
           onTap: (index) {
             if (index == 1) {
               context.router.push(const SignOutRoute());
