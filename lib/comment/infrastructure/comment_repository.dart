@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:test_appifylab/comment/infrastructure/dtos/comment_body_dto.dart';
 import 'package:test_appifylab/comment/infrastructure/dtos/comment_dto.dart';
 import 'package:test_appifylab/core/infrastructure/api_call_wrapper.dart';

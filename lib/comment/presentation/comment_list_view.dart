@@ -43,15 +43,18 @@ class CommentListView extends StatelessWidget
                     ),
                   )
                 : ListView.builder(
+                    padding: EdgeInsets.only(bottom: 100),
                     controller: getScrollController(context),
                     itemBuilder: (context, index) => state.map(
                       initial: (data) => CommentTile(
                         comment: data.items[index],
+                        focusNode: FocusNode(),
                       ),
                       loadInProgress: (data) {
                         if (index < data.items.length) {
                           return CommentTile(
                             comment: data.items[index],
+                            focusNode: FocusNode(),
                           );
                         }
                         return Center(
@@ -60,9 +63,11 @@ class CommentListView extends StatelessWidget
                       },
                       loadSuccess: (data) => CommentTile(
                         comment: data.items[index],
+                        focusNode: FocusNode(),
                       ),
                       loadFailure: (data) => CommentTile(
                         comment: data.items[index],
+                        focusNode: FocusNode(),
                       ),
                     ),
                     itemCount: state.map(

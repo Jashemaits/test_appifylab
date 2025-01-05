@@ -575,6 +575,7 @@ mixin _$CommentCreateState {
   String get commentText => throw _privateConstructorUsedError;
   CommentDTO? get parentComment => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
+  CommentDTO? get newCreatedComment => throw _privateConstructorUsedError;
 
   /// Create a copy of CommentCreateState
   /// with the given fields replaced by the non-null parameter values.
@@ -593,9 +594,11 @@ abstract class $CommentCreateStateCopyWith<$Res> {
       {FormzSubmissionStatus status,
       String commentText,
       CommentDTO? parentComment,
-      AppException? error});
+      AppException? error,
+      CommentDTO? newCreatedComment});
 
   $CommentDTOCopyWith<$Res>? get parentComment;
+  $CommentDTOCopyWith<$Res>? get newCreatedComment;
 }
 
 /// @nodoc
@@ -617,6 +620,7 @@ class _$CommentCreateStateCopyWithImpl<$Res, $Val extends CommentCreateState>
     Object? commentText = null,
     Object? parentComment = freezed,
     Object? error = freezed,
+    Object? newCreatedComment = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -635,6 +639,10 @@ class _$CommentCreateStateCopyWithImpl<$Res, $Val extends CommentCreateState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      newCreatedComment: freezed == newCreatedComment
+          ? _value.newCreatedComment
+          : newCreatedComment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO?,
     ) as $Val);
   }
 
@@ -651,6 +659,20 @@ class _$CommentCreateStateCopyWithImpl<$Res, $Val extends CommentCreateState>
       return _then(_value.copyWith(parentComment: value) as $Val);
     });
   }
+
+  /// Create a copy of CommentCreateState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentDTOCopyWith<$Res>? get newCreatedComment {
+    if (_value.newCreatedComment == null) {
+      return null;
+    }
+
+    return $CommentDTOCopyWith<$Res>(_value.newCreatedComment!, (value) {
+      return _then(_value.copyWith(newCreatedComment: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -665,10 +687,13 @@ abstract class _$$CommentCreateStateImplCopyWith<$Res>
       {FormzSubmissionStatus status,
       String commentText,
       CommentDTO? parentComment,
-      AppException? error});
+      AppException? error,
+      CommentDTO? newCreatedComment});
 
   @override
   $CommentDTOCopyWith<$Res>? get parentComment;
+  @override
+  $CommentDTOCopyWith<$Res>? get newCreatedComment;
 }
 
 /// @nodoc
@@ -688,6 +713,7 @@ class __$$CommentCreateStateImplCopyWithImpl<$Res>
     Object? commentText = null,
     Object? parentComment = freezed,
     Object? error = freezed,
+    Object? newCreatedComment = freezed,
   }) {
     return _then(_$CommentCreateStateImpl(
       status: null == status
@@ -706,6 +732,10 @@ class __$$CommentCreateStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
+      newCreatedComment: freezed == newCreatedComment
+          ? _value.newCreatedComment
+          : newCreatedComment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO?,
     ));
   }
 }
@@ -717,7 +747,8 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
       {this.status = FormzSubmissionStatus.initial,
       this.commentText = "",
       this.parentComment,
-      this.error});
+      this.error,
+      this.newCreatedComment});
 
   @override
   @JsonKey()
@@ -729,10 +760,12 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
   final CommentDTO? parentComment;
   @override
   final AppException? error;
+  @override
+  final CommentDTO? newCreatedComment;
 
   @override
   String toString() {
-    return 'CommentCreateState(status: $status, commentText: $commentText, parentComment: $parentComment, error: $error)';
+    return 'CommentCreateState(status: $status, commentText: $commentText, parentComment: $parentComment, error: $error, newCreatedComment: $newCreatedComment)';
   }
 
   @override
@@ -745,12 +778,14 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
                 other.commentText == commentText) &&
             (identical(other.parentComment, parentComment) ||
                 other.parentComment == parentComment) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.newCreatedComment, newCreatedComment) ||
+                other.newCreatedComment == newCreatedComment));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, commentText, parentComment, error);
+  int get hashCode => Object.hash(runtimeType, status, commentText,
+      parentComment, error, newCreatedComment);
 
   /// Create a copy of CommentCreateState
   /// with the given fields replaced by the non-null parameter values.
@@ -767,7 +802,8 @@ abstract class _CommentCreateState implements CommentCreateState {
       {final FormzSubmissionStatus status,
       final String commentText,
       final CommentDTO? parentComment,
-      final AppException? error}) = _$CommentCreateStateImpl;
+      final AppException? error,
+      final CommentDTO? newCreatedComment}) = _$CommentCreateStateImpl;
 
   @override
   FormzSubmissionStatus get status;
@@ -777,6 +813,8 @@ abstract class _CommentCreateState implements CommentCreateState {
   CommentDTO? get parentComment;
   @override
   AppException? get error;
+  @override
+  CommentDTO? get newCreatedComment;
 
   /// Create a copy of CommentCreateState
   /// with the given fields replaced by the non-null parameter values.

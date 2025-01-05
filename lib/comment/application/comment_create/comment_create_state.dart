@@ -7,5 +7,6 @@ class CommentCreateState with _$CommentCreateState {
     @Default("") String commentText,
     CommentDTO? parentComment,
     AppException? error,
+    CommentDTO? newCreatedComment,
   }) = _CommentCreateState;
 }

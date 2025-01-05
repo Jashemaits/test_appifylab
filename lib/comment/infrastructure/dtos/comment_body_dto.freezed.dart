@@ -22,7 +22,7 @@ CommentBodyDTO _$CommentBodyDTOFromJson(Map<String, dynamic> json) {
 mixin _$CommentBodyDTO {
   @JsonKey(name: "feed_id")
   int get feedId => throw _privateConstructorUsedError;
-  @JsonKey(name: "parent_id", includeIfNull: false)
+  @JsonKey(name: "parrent_id", includeIfNull: false)
   int? get parentId => throw _privateConstructorUsedError;
   @JsonKey(name: "feed_user_id")
   int get feedUserId => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $CommentBodyDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "feed_id") int feedId,
-      @JsonKey(name: "parent_id", includeIfNull: false) int? parentId,
+      @JsonKey(name: "parrent_id", includeIfNull: false) int? parentId,
       @JsonKey(name: "feed_user_id") int feedUserId,
       @JsonKey(name: "commentSource") String commentSource,
       @JsonKey(name: "comment_txt") String content});
@@ -111,7 +111,7 @@ abstract class _$$CommentBodyDTOImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "feed_id") int feedId,
-      @JsonKey(name: "parent_id", includeIfNull: false) int? parentId,
+      @JsonKey(name: "parrent_id", includeIfNull: false) int? parentId,
       @JsonKey(name: "feed_user_id") int feedUserId,
       @JsonKey(name: "commentSource") String commentSource,
       @JsonKey(name: "comment_txt") String content});
@@ -166,7 +166,7 @@ class __$$CommentBodyDTOImplCopyWithImpl<$Res>
 class _$CommentBodyDTOImpl implements _CommentBodyDTO {
   _$CommentBodyDTOImpl(
       {@JsonKey(name: "feed_id") required this.feedId,
-      @JsonKey(name: "parent_id", includeIfNull: false) this.parentId,
+      @JsonKey(name: "parrent_id", includeIfNull: false) this.parentId,
       @JsonKey(name: "feed_user_id") required this.feedUserId,
       @JsonKey(name: "commentSource") required this.commentSource,
       @JsonKey(name: "comment_txt") required this.content});
@@ -178,7 +178,7 @@ class _$CommentBodyDTOImpl implements _CommentBodyDTO {
   @JsonKey(name: "feed_id")
   final int feedId;
   @override
-  @JsonKey(name: "parent_id", includeIfNull: false)
+  @JsonKey(name: "parrent_id", includeIfNull: false)
   final int? parentId;
   @override
   @JsonKey(name: "feed_user_id")
@@ -234,12 +234,12 @@ class _$CommentBodyDTOImpl implements _CommentBodyDTO {
 
 abstract class _CommentBodyDTO implements CommentBodyDTO {
   factory _CommentBodyDTO(
-          {@JsonKey(name: "feed_id") required final int feedId,
-          @JsonKey(name: "parent_id", includeIfNull: false) final int? parentId,
-          @JsonKey(name: "feed_user_id") required final int feedUserId,
-          @JsonKey(name: "commentSource") required final String commentSource,
-          @JsonKey(name: "comment_txt") required final String content}) =
-      _$CommentBodyDTOImpl;
+      {@JsonKey(name: "feed_id") required final int feedId,
+      @JsonKey(name: "parrent_id", includeIfNull: false) final int? parentId,
+      @JsonKey(name: "feed_user_id") required final int feedUserId,
+      @JsonKey(name: "commentSource") required final String commentSource,
+      @JsonKey(name: "comment_txt")
+      required final String content}) = _$CommentBodyDTOImpl;
 
   factory _CommentBodyDTO.fromJson(Map<String, dynamic> json) =
       _$CommentBodyDTOImpl.fromJson;
@@ -248,7 +248,7 @@ abstract class _CommentBodyDTO implements CommentBodyDTO {
   @JsonKey(name: "feed_id")
   int get feedId;
   @override
-  @JsonKey(name: "parent_id", includeIfNull: false)
+  @JsonKey(name: "parrent_id", includeIfNull: false)
   int? get parentId;
   @override
   @JsonKey(name: "feed_user_id")

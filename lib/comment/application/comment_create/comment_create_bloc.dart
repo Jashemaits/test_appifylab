@@ -34,14 +34,19 @@ class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
     final commentText = event.value;
     emit(
       state.copyWith(
+        status: FormzSubmissionStatus.initial,
         commentText: commentText,
+        newCreatedComment: null,
       ),
     );
   }
 
   void _onParentCommentChanged(
       _ParentCommentChanged event, Emitter<CommentCreateState> emit) {
-    emit(state.copyWith(parentComment: event.parentComment));
+    emit(state.copyWith(
+      parentComment: event.parentComment,
+      newCreatedComment: null,
+    ));
   }
 
   Future<bool> _onSubmitted(
@@ -50,6 +55,7 @@ class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
       emit(state.copyWith(
         status: FormzSubmissionStatus.inProgress,
         error: null,
+        newCreatedComment: null,
       ));
       try {
         final comment =
@@ -61,10 +67,14 @@ class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
                 ));
         if (state.parentComment == null) {
           _commentsBloc.add(CommentsEvent.commentCreated(comment));
-        } else {}
-        _feedBloc.add(FeedEvent.commentCreated(comment, event.postIndex));
+          _feedBloc.add(FeedEvent.commentCreated(comment, event.postIndex));
+        }
+
         emit(state.copyWith(
           status: FormzSubmissionStatus.success,
+          commentText: "",
+          parentComment: null,
+          newCreatedComment: comment,
           error: null,
         ));
 

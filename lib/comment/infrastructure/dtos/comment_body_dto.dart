@@ -7,7 +7,7 @@ part 'comment_body_dto.g.dart';
 class CommentBodyDTO with _$CommentBodyDTO {
   factory CommentBodyDTO({
     @JsonKey(name: "feed_id") required int feedId,
-    @JsonKey(name: "parent_id", includeIfNull: false) int? parentId,
+    @JsonKey(name: "parrent_id", includeIfNull: false) int? parentId,
     @JsonKey(name: "feed_user_id") required int feedUserId,
     @JsonKey(name: "commentSource") required String commentSource,
     @JsonKey(name: "comment_txt") required String content,

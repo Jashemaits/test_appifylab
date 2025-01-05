@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:test_appifylab/comment/presentation/comments_page.dart';
 import 'package:test_appifylab/core/presentation/modal_draggable_sheet.dart';
-import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
 import 'package:test_appifylab/feed/presentation/feed_page.dart';
 import 'package:test_appifylab/feed/presentation/post_create_page.dart';
 import 'package:test_appifylab/home/presentation/home_page.dart';
