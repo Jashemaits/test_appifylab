@@ -31,6 +31,7 @@ class Styles {
     Color? background,
     Color? borderColor,
     TextStyle? hintStyle,
+    double? borderRadius,
     EdgeInsetsGeometry? suffixPadding,
     EdgeInsetsGeometry? prefixPadding,
     EdgeInsetsGeometry? contentPadding,
@@ -39,19 +40,19 @@ class Styles {
       filled: true,
       fillColor: background ?? Color.fromRGBO(255, 255, 255, 0.1),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(borderRadius ?? 10),
         borderSide: BorderSide(
           color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(borderRadius ?? 10),
         borderSide: BorderSide(
           color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(borderRadius ?? 10),
         borderSide: BorderSide(
           color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
         ),

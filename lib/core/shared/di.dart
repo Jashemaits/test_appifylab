@@ -6,6 +6,8 @@ import 'package:test_appifylab/auth/infrastructure/auth_api_service.dart';
 import 'package:test_appifylab/auth/infrastructure/auth_interceptor.dart';
 import 'package:test_appifylab/auth/infrastructure/auth_local_service.dart';
 import 'package:test_appifylab/auth/infrastructure/auth_repository.dart';
+import 'package:test_appifylab/comment/infrastructure/comment_api_service.dart';
+import 'package:test_appifylab/comment/infrastructure/comment_repository.dart';
 import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/presentation/routes/app_router.dart';
 import 'package:test_appifylab/feed/application/feed_bloc/feed_bloc.dart';
@@ -46,5 +48,7 @@ Future<void> setupServiceLocator() async {
     ..registerFactory(() => FeedRepository(
           apiService: di(),
         ))
-    ..registerLazySingleton(() => FeedBloc(di()));
+    ..registerLazySingleton(() => FeedBloc(di()))
+    ..registerFactory(() => CommentApiService(di(instanceName: kAuthDio)))
+    ..registerFactory(() => CommentRepository(apiService: di()));
 }

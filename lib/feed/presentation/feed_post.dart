@@ -1,5 +1,5 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_reaction_button/flutter_reaction_button.dart';
@@ -9,10 +9,12 @@ import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/presentation/app_colors.dart';
 import 'package:test_appifylab/core/presentation/gaps.dart';
 import 'package:test_appifylab/core/presentation/image_assaets.dart';
+import 'package:test_appifylab/core/presentation/routes/app_router.dart';
 import 'package:test_appifylab/core/shared/di.dart';
 import 'package:test_appifylab/feed/application/feed_bloc/feed_bloc.dart';
 import 'package:test_appifylab/feed/application/reaction_bloc/reaction_bloc.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
+import 'package:test_appifylab/feed/presentation/post_reactions.dart';
 
 class FeedPost extends StatelessWidget {
   const FeedPost({super.key, required this.post, required this.index});
@@ -24,7 +26,6 @@ class FeedPost extends StatelessWidget {
         ? kFeedBackGroundGradientColors.indexOf(post.bgColor!)
         : -1;
 
-    final likeTypeLength = ((post.likeType?.length ?? 0) - 1) * 15;
     return BlocProvider(
       create: (context) => ReactionBloc(di(), context.read<FeedBloc>()),
       child: Builder(builder: (context) {
@@ -118,57 +119,7 @@ class FeedPost extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: likeTypeLength > 0
-                          ? likeTypeLength.toDouble() + 18
-                          : 18,
-                      height: 18,
-                      child: Stack(
-                        children: [
-                          if (post.likeType != null &&
-                              post.likeType!.isNotEmpty)
-                            ...post.likeType!.mapIndexed(
-                              (index, e) {
-                                return Positioned(
-                                  top: 0,
-                                  left: index * 15,
-                                  child: SvgPicture.asset(
-                                    e.reactionType!.toLowerCase().svg,
-                                    height: 18,
-                                  ),
-                                );
-                              },
-                            ),
-                          if (post.like != null &&
-                              post.likeType?.isEmpty == true)
-                            SvgPicture.asset(
-                              post.like!.reactionType!.toLowerCase().svg,
-                              height: 18,
-                            ),
-                          if (post.likeType != null &&
-                              post.likeType?.isEmpty == true)
-                            SvgPicture.asset(
-                              ImageAssets.like,
-                              height: 18,
-                            ),
-                        ],
-                      ),
-                    ),
-                    6.hGap,
-                    Text(
-                      post.like != null
-                          ? "You and ${(post.likeCount ?? 0) > 1 ? "${(post.likeCount ?? 0) - 1}" : 0} other"
-                          : '${post.likeCount ?? 0}',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(51, 55, 65, 1),
-                      ),
-                    ),
-                  ],
-                ),
+                PostReactions(post: post),
                 Row(
                   children: [
                     SvgPicture.asset(
@@ -259,7 +210,12 @@ class FeedPost extends StatelessWidget {
                   },
                 ),
                 TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushRoute(CommentsRoute(post: post));
+                  },
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                  ),
                   icon: SvgPicture.asset(ImageAssets.comment_fill),
                   label: Text(
                     "Comment",

@@ -10,6 +10,52 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [CommentsPage]
+class CommentsRoute extends PageRouteInfo<CommentsRouteArgs> {
+  CommentsRoute({
+    Key? key,
+    required PostDTO post,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CommentsRoute.name,
+          args: CommentsRouteArgs(
+            key: key,
+            post: post,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CommentsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CommentsRouteArgs>();
+      return CommentsPage(
+        key: args.key,
+        post: args.post,
+      );
+    },
+  );
+}
+
+class CommentsRouteArgs {
+  const CommentsRouteArgs({
+    this.key,
+    required this.post,
+  });
+
+  final Key? key;
+
+  final PostDTO post;
+
+  @override
+  String toString() {
+    return 'CommentsRouteArgs{key: $key, post: $post}';
+  }
+}
+
+/// generated route for
 /// [FeedPage]
 class FeedRoute extends PageRouteInfo<void> {
   const FeedRoute({List<PageRouteInfo>? children})

@@ -19,6 +19,7 @@ class ImageAssets {
   static String get wow => 'wow'.svg;
   static String get sad => 'sad'.svg;
   static String get angry => 'angry'.svg;
+  static String get paper_fly => 'paper_fly'.svg;
 }
 
 extension ImageAssetsExtension on String {
