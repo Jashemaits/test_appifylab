@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:test_appifylab/feed/infrastructure/dtos/post_body_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/feed_body_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/reaction_body_dto.dart';
@@ -19,5 +20,10 @@ abstract class FeedApiService {
   @POST("/createLike")
   Future<ReactionDTO> reaction(
     @Body() ReactionBodyDTO body,
+  );
+
+  @POST("/createFeedWithUpload")
+  Future<PostDTO> createPost(
+    @Body() PostBodyDTO body,
   );
 }

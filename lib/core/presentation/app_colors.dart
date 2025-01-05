@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -11,16 +9,7 @@ class AppColors {
   static const subTitle = Color.fromRGBO(255, 255, 255, 1);
   static const bottomNavText = Color.fromRGBO(16, 24, 40, 1);
 
-  static List gradientsColor = const [
-    LinearGradient(
-      begin: Alignment(-1.0, 0.0),
-      end: Alignment(1.0, 0.0),
-      transform: GradientRotation(90),
-      colors: [
-        Color(0xFFFFFFFF),
-        Color(0xFFFFFFFF),
-      ],
-    ),
+  static List<LinearGradient> gradientsColor = const [
     LinearGradient(
       begin: Alignment(-1.0, 0.0),
       end: Alignment(1.0, 0.0),

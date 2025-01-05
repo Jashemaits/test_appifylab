@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:test_appifylab/core/presentation/gaps.dart';
 import 'package:test_appifylab/core/presentation/image_assaets.dart';
+import 'package:test_appifylab/core/presentation/routes/app_router.dart';
 
 class FeedPostHeader extends StatelessWidget {
   const FeedPostHeader({
@@ -25,7 +27,9 @@ class FeedPostHeader extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          context.pushRoute(const PostCreateRoute());
+        },
         child: Row(
           children: [
             Image.asset(

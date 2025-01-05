@@ -1,5 +1,6 @@
 import 'package:test_appifylab/core/infrastructure/api_call_wrapper.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/feed_body_dto.dart';
+import 'package:test_appifylab/feed/infrastructure/dtos/post_body_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/reaction_body_dto.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/reaction_dto.dart';
@@ -36,6 +37,28 @@ class FeedRepository {
           reactionType: reactionType,
           action: "deleteOrCreate",
           reactionSource: "COMMUNITY")),
+    );
+    return res;
+  }
+
+  Future<PostDTO> createPost({
+    required String feedText,
+    required int communityId,
+    required int spaceId,
+    String? bgColor,
+  }) async {
+    final res = await apiCallWrapper(
+      () => _apiService.createPost(
+        PostBodyDTO(
+          feedText: feedText,
+          communityId: communityId,
+          spaceId: spaceId,
+          uploadType: "text",
+          activityType: "group",
+          isBackground: bgColor != null ? 1 : 0,
+          bgColor: bgColor,
+        ),
+      ),
     );
     return res;
   }

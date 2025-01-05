@@ -8,6 +8,7 @@ import 'package:test_appifylab/auth/infrastructure/auth_local_service.dart';
 import 'package:test_appifylab/auth/infrastructure/auth_repository.dart';
 import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/presentation/routes/app_router.dart';
+import 'package:test_appifylab/feed/application/feed_bloc/feed_bloc.dart';
 import 'package:test_appifylab/feed/infrastructure/feed_api_service.dart';
 import 'package:test_appifylab/feed/infrastructure/feed_repository.dart';
 
@@ -44,5 +45,6 @@ Future<void> setupServiceLocator() async {
     ..registerFactory(() => FeedApiService(di(instanceName: kAuthDio)))
     ..registerFactory(() => FeedRepository(
           apiService: di(),
-        ));
+        ))
+    ..registerLazySingleton(() => FeedBloc(di()));
 }

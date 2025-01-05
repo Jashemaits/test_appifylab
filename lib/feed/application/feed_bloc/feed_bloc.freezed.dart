@@ -20,18 +20,21 @@ mixin _$FeedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
+    required TResult Function(PostDTO post) postCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
+    TResult? Function(PostDTO post)? postCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
+    TResult Function(PostDTO post)? postCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$FeedEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
+    required TResult Function(_PostCreated value) postCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
+    TResult? Function(_PostCreated value)? postCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
+    TResult Function(_PostCreated value)? postCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +152,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
+    required TResult Function(PostDTO post) postCreated,
   }) {
     return loaded(lastId);
   }
@@ -155,6 +162,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
+    TResult? Function(PostDTO post)? postCreated,
   }) {
     return loaded?.call(lastId);
   }
@@ -164,6 +172,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
+    TResult Function(PostDTO post)? postCreated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -177,6 +186,7 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
+    required TResult Function(_PostCreated value) postCreated,
   }) {
     return loaded(this);
   }
@@ -186,6 +196,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
+    TResult? Function(_PostCreated value)? postCreated,
   }) {
     return loaded?.call(this);
   }
@@ -195,6 +206,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
+    TResult Function(_PostCreated value)? postCreated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -307,6 +319,7 @@ class _$ReactedImpl implements _Reacted {
   TResult when<TResult extends Object?>({
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
+    required TResult Function(PostDTO post) postCreated,
   }) {
     return reacted(index, reaction);
   }
@@ -316,6 +329,7 @@ class _$ReactedImpl implements _Reacted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
+    TResult? Function(PostDTO post)? postCreated,
   }) {
     return reacted?.call(index, reaction);
   }
@@ -325,6 +339,7 @@ class _$ReactedImpl implements _Reacted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
+    TResult Function(PostDTO post)? postCreated,
     required TResult orElse(),
   }) {
     if (reacted != null) {
@@ -338,6 +353,7 @@ class _$ReactedImpl implements _Reacted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
+    required TResult Function(_PostCreated value) postCreated,
   }) {
     return reacted(this);
   }
@@ -347,6 +363,7 @@ class _$ReactedImpl implements _Reacted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
+    TResult? Function(_PostCreated value)? postCreated,
   }) {
     return reacted?.call(this);
   }
@@ -356,6 +373,7 @@ class _$ReactedImpl implements _Reacted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
+    TResult Function(_PostCreated value)? postCreated,
     required TResult orElse(),
   }) {
     if (reacted != null) {
@@ -376,6 +394,164 @@ abstract class _Reacted implements FeedEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReactedImplCopyWith<_$ReactedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PostCreatedImplCopyWith<$Res> {
+  factory _$$PostCreatedImplCopyWith(
+          _$PostCreatedImpl value, $Res Function(_$PostCreatedImpl) then) =
+      __$$PostCreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PostDTO post});
+
+  $PostDTOCopyWith<$Res> get post;
+}
+
+/// @nodoc
+class __$$PostCreatedImplCopyWithImpl<$Res>
+    extends _$FeedEventCopyWithImpl<$Res, _$PostCreatedImpl>
+    implements _$$PostCreatedImplCopyWith<$Res> {
+  __$$PostCreatedImplCopyWithImpl(
+      _$PostCreatedImpl _value, $Res Function(_$PostCreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? post = null,
+  }) {
+    return _then(_$PostCreatedImpl(
+      null == post
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as PostDTO,
+    ));
+  }
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PostDTOCopyWith<$Res> get post {
+    return $PostDTOCopyWith<$Res>(_value.post, (value) {
+      return _then(_value.copyWith(post: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PostCreatedImpl implements _PostCreated {
+  const _$PostCreatedImpl(this.post);
+
+  @override
+  final PostDTO post;
+
+  @override
+  String toString() {
+    return 'FeedEvent.postCreated(post: $post)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostCreatedImpl &&
+            (identical(other.post, post) || other.post == post));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, post);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostCreatedImplCopyWith<_$PostCreatedImpl> get copyWith =>
+      __$$PostCreatedImplCopyWithImpl<_$PostCreatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? lastId) loaded,
+    required TResult Function(int index, ReactionDTO reaction) reacted,
+    required TResult Function(PostDTO post) postCreated,
+  }) {
+    return postCreated(post);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? lastId)? loaded,
+    TResult? Function(int index, ReactionDTO reaction)? reacted,
+    TResult? Function(PostDTO post)? postCreated,
+  }) {
+    return postCreated?.call(post);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? lastId)? loaded,
+    TResult Function(int index, ReactionDTO reaction)? reacted,
+    TResult Function(PostDTO post)? postCreated,
+    required TResult orElse(),
+  }) {
+    if (postCreated != null) {
+      return postCreated(post);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Reacted value) reacted,
+    required TResult Function(_PostCreated value) postCreated,
+  }) {
+    return postCreated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Reacted value)? reacted,
+    TResult? Function(_PostCreated value)? postCreated,
+  }) {
+    return postCreated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Reacted value)? reacted,
+    TResult Function(_PostCreated value)? postCreated,
+    required TResult orElse(),
+  }) {
+    if (postCreated != null) {
+      return postCreated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostCreated implements FeedEvent {
+  const factory _PostCreated(final PostDTO post) = _$PostCreatedImpl;
+
+  PostDTO get post;
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PostCreatedImplCopyWith<_$PostCreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

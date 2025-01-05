@@ -17,6 +17,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
       await event.map(
         loaded: (event) async => await _onLoaded(event, emit),
         reacted: (event) async => await _onReacted(event, emit),
+        postCreated: (event) async => await _onPostCreated(event, emit),
       );
     });
   }
@@ -57,5 +58,10 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
               : e)
           .toList(),
     ));
+  }
+
+  Future<void> _onPostCreated(
+      _PostCreated event, Emitter<FeedState> emit) async {
+    emit(state.copyWith(items: [event.post, ...state.items]));
   }
 }

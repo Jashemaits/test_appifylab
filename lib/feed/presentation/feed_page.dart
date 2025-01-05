@@ -13,7 +13,7 @@ class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FeedBloc(di())..add(const FeedEvent.loaded(null)),
+      create: (context) => di<FeedBloc>()..add(const FeedEvent.loaded(null)),
       child: Builder(builder: (context) {
         return BlocBuilder<FeedBloc, FeedState>(
           builder: (context, state) {

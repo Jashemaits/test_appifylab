@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:test_appifylab/feed/presentation/feed_page.dart';
+import 'package:test_appifylab/feed/presentation/post_create_page.dart';
 import 'package:test_appifylab/home/presentation/home_page.dart';
 import 'package:test_appifylab/sign_in/presentation/sign_in_page.dart';
 import 'package:test_appifylab/sign_out/presentation/sign_out_page.dart';
@@ -30,6 +31,11 @@ class AppRouter extends RootStackRouter {
             reverseDurationInMilliseconds: 300,
             transitionsBuilder: _diaologTransitionBuilder,
           ),
+        ),
+        AutoRoute(
+          page: PostCreateRoute.page,
+          path: '/post-create',
+          fullscreenDialog: true,
         ),
       ];
 }

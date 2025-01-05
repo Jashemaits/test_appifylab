@@ -29,6 +29,8 @@ class Styles {
     Widget? suffix,
     Widget? prefix,
     Color? background,
+    Color? borderColor,
+    TextStyle? hintStyle,
     EdgeInsetsGeometry? suffixPadding,
     EdgeInsetsGeometry? prefixPadding,
     EdgeInsetsGeometry? contentPadding,
@@ -38,24 +40,29 @@ class Styles {
       fillColor: background ?? Color.fromRGBO(255, 255, 255, 0.1),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Color.fromRGBO(208, 213, 221, 0.2)),
+        borderSide: BorderSide(
+          color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Color.fromRGBO(208, 213, 221, 0.2)),
+        borderSide: BorderSide(
+          color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
+        ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Color.fromRGBO(208, 213, 221, 0.2)),
+        borderSide: BorderSide(
+          color: borderColor ?? Color.fromRGBO(208, 213, 221, 0.2),
+        ),
       ),
       hintText: hint,
-      hintStyle: hint != null
-          ? TextStyle(
-              color: Color.fromRGBO(245, 245, 255, 0.5),
-              fontSize: 19,
-              fontWeight: FontWeight.w500,
-            )
-          : null,
+      hintStyle: hintStyle ??
+          TextStyle(
+            color: Color.fromRGBO(245, 245, 255, 0.5),
+            fontSize: 19,
+            fontWeight: FontWeight.w500,
+          ),
       contentPadding:
           contentPadding ?? EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       errorText: error,
