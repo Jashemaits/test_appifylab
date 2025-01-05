@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:test_appifylab/comment/infrastructure/dtos/comment_dto.dart';
 import 'package:test_appifylab/core/infrastructure/constatnts.dart';
 import 'package:test_appifylab/core/infrastructure/exceptions.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
@@ -18,6 +19,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
         loaded: (event) async => await _onLoaded(event, emit),
         reacted: (event) async => await _onReacted(event, emit),
         postCreated: (event) async => await _onPostCreated(event, emit),
+        commentCreated: (event) async => await _onCommentCreated(event, emit),
       );
     });
   }
@@ -63,5 +65,18 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
   Future<void> _onPostCreated(
       _PostCreated event, Emitter<FeedState> emit) async {
     emit(state.copyWith(items: [event.post, ...state.items]));
+  }
+
+  Future<void> _onCommentCreated(
+      _CommentCreated event, Emitter<FeedState> emit) async {
+    emit(state.copyWith(
+      items: state.items
+          .mapIndexed((index, e) => index == event.index
+              ? e.copyWith(
+                  commentCount: e.commentCount! + 1,
+                )
+              : e)
+          .toList(),
+    ));
   }
 }

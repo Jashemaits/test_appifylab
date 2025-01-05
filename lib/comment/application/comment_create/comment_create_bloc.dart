@@ -3,26 +3,31 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_appifylab/comment/application/comments_bloc/comments_bloc.dart';
 import 'package:test_appifylab/comment/infrastructure/comment_repository.dart';
+import 'package:test_appifylab/comment/infrastructure/dtos/comment_dto.dart';
 import 'package:test_appifylab/core/infrastructure/api_call_wrapper.dart';
 import 'package:test_appifylab/core/infrastructure/exceptions.dart';
+import 'package:test_appifylab/feed/application/feed_bloc/feed_bloc.dart';
 
 part 'comment_create_event.dart';
 part 'comment_create_state.dart';
 part 'comment_create_bloc.freezed.dart';
 
 class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
-  CommentCreateBloc(this._commentRepository, this._commentsBloc)
+  CommentCreateBloc(this._commentRepository, this._commentsBloc, this._feedBloc)
       : super(CommentCreateState()) {
     on<CommentCreateEvent>((event, emit) async {
       await event.map(
         commentTextChanged: (event) async => _onCommentTextChanged(event, emit),
         submitted: (event) async => await _onSubmitted(event, emit),
+        parentCommentChanged: (event) async =>
+            _onParentCommentChanged(event, emit),
       );
     });
   }
 
   final CommentRepository _commentRepository;
   final CommentsBloc _commentsBloc;
+  final FeedBloc _feedBloc;
 
   void _onCommentTextChanged(
       _CommentTextChanged event, Emitter<CommentCreateState> emit) {
@@ -32,6 +37,11 @@ class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
         commentText: commentText,
       ),
     );
+  }
+
+  void _onParentCommentChanged(
+      _ParentCommentChanged event, Emitter<CommentCreateState> emit) {
+    emit(state.copyWith(parentComment: event.parentComment));
   }
 
   Future<bool> _onSubmitted(
@@ -47,11 +57,12 @@ class CommentCreateBloc extends Bloc<CommentCreateEvent, CommentCreateState> {
                   feedId: event.feedId,
                   feedUserId: event.feedUserId,
                   content: state.commentText,
-                  parentId: event.parentId,
+                  parentId: state.parentComment?.id,
                 ));
-        if (event.parentId == null) {
+        if (state.parentComment == null) {
           _commentsBloc.add(CommentsEvent.commentCreated(comment));
         } else {}
+        _feedBloc.add(FeedEvent.commentCreated(comment, event.postIndex));
         emit(state.copyWith(
           status: FormzSubmissionStatus.success,
           error: null,

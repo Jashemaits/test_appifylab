@@ -21,6 +21,7 @@ mixin _$FeedEvent {
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
     required TResult Function(PostDTO post) postCreated,
+    required TResult Function(CommentDTO comment, int index) commentCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$FeedEvent {
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
     TResult? Function(PostDTO post)? postCreated,
+    TResult? Function(CommentDTO comment, int index)? commentCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$FeedEvent {
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
     TResult Function(PostDTO post)? postCreated,
+    TResult Function(CommentDTO comment, int index)? commentCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$FeedEvent {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
     required TResult Function(_PostCreated value) postCreated,
+    required TResult Function(_CommentCreated value) commentCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$FeedEvent {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
     TResult? Function(_PostCreated value)? postCreated,
+    TResult? Function(_CommentCreated value)? commentCreated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$FeedEvent {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
     TResult Function(_PostCreated value)? postCreated,
+    TResult Function(_CommentCreated value)? commentCreated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +159,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
     required TResult Function(PostDTO post) postCreated,
+    required TResult Function(CommentDTO comment, int index) commentCreated,
   }) {
     return loaded(lastId);
   }
@@ -163,6 +170,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
     TResult? Function(PostDTO post)? postCreated,
+    TResult? Function(CommentDTO comment, int index)? commentCreated,
   }) {
     return loaded?.call(lastId);
   }
@@ -173,6 +181,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
     TResult Function(PostDTO post)? postCreated,
+    TResult Function(CommentDTO comment, int index)? commentCreated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -187,6 +196,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
     required TResult Function(_PostCreated value) postCreated,
+    required TResult Function(_CommentCreated value) commentCreated,
   }) {
     return loaded(this);
   }
@@ -197,6 +207,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
     TResult? Function(_PostCreated value)? postCreated,
+    TResult? Function(_CommentCreated value)? commentCreated,
   }) {
     return loaded?.call(this);
   }
@@ -207,6 +218,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
     TResult Function(_PostCreated value)? postCreated,
+    TResult Function(_CommentCreated value)? commentCreated,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -320,6 +332,7 @@ class _$ReactedImpl implements _Reacted {
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
     required TResult Function(PostDTO post) postCreated,
+    required TResult Function(CommentDTO comment, int index) commentCreated,
   }) {
     return reacted(index, reaction);
   }
@@ -330,6 +343,7 @@ class _$ReactedImpl implements _Reacted {
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
     TResult? Function(PostDTO post)? postCreated,
+    TResult? Function(CommentDTO comment, int index)? commentCreated,
   }) {
     return reacted?.call(index, reaction);
   }
@@ -340,6 +354,7 @@ class _$ReactedImpl implements _Reacted {
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
     TResult Function(PostDTO post)? postCreated,
+    TResult Function(CommentDTO comment, int index)? commentCreated,
     required TResult orElse(),
   }) {
     if (reacted != null) {
@@ -354,6 +369,7 @@ class _$ReactedImpl implements _Reacted {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
     required TResult Function(_PostCreated value) postCreated,
+    required TResult Function(_CommentCreated value) commentCreated,
   }) {
     return reacted(this);
   }
@@ -364,6 +380,7 @@ class _$ReactedImpl implements _Reacted {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
     TResult? Function(_PostCreated value)? postCreated,
+    TResult? Function(_CommentCreated value)? commentCreated,
   }) {
     return reacted?.call(this);
   }
@@ -374,6 +391,7 @@ class _$ReactedImpl implements _Reacted {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
     TResult Function(_PostCreated value)? postCreated,
+    TResult Function(_CommentCreated value)? commentCreated,
     required TResult orElse(),
   }) {
     if (reacted != null) {
@@ -480,6 +498,7 @@ class _$PostCreatedImpl implements _PostCreated {
     required TResult Function(int? lastId) loaded,
     required TResult Function(int index, ReactionDTO reaction) reacted,
     required TResult Function(PostDTO post) postCreated,
+    required TResult Function(CommentDTO comment, int index) commentCreated,
   }) {
     return postCreated(post);
   }
@@ -490,6 +509,7 @@ class _$PostCreatedImpl implements _PostCreated {
     TResult? Function(int? lastId)? loaded,
     TResult? Function(int index, ReactionDTO reaction)? reacted,
     TResult? Function(PostDTO post)? postCreated,
+    TResult? Function(CommentDTO comment, int index)? commentCreated,
   }) {
     return postCreated?.call(post);
   }
@@ -500,6 +520,7 @@ class _$PostCreatedImpl implements _PostCreated {
     TResult Function(int? lastId)? loaded,
     TResult Function(int index, ReactionDTO reaction)? reacted,
     TResult Function(PostDTO post)? postCreated,
+    TResult Function(CommentDTO comment, int index)? commentCreated,
     required TResult orElse(),
   }) {
     if (postCreated != null) {
@@ -514,6 +535,7 @@ class _$PostCreatedImpl implements _PostCreated {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Reacted value) reacted,
     required TResult Function(_PostCreated value) postCreated,
+    required TResult Function(_CommentCreated value) commentCreated,
   }) {
     return postCreated(this);
   }
@@ -524,6 +546,7 @@ class _$PostCreatedImpl implements _PostCreated {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Reacted value)? reacted,
     TResult? Function(_PostCreated value)? postCreated,
+    TResult? Function(_CommentCreated value)? commentCreated,
   }) {
     return postCreated?.call(this);
   }
@@ -534,6 +557,7 @@ class _$PostCreatedImpl implements _PostCreated {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Reacted value)? reacted,
     TResult Function(_PostCreated value)? postCreated,
+    TResult Function(_CommentCreated value)? commentCreated,
     required TResult orElse(),
   }) {
     if (postCreated != null) {
@@ -552,6 +576,181 @@ abstract class _PostCreated implements FeedEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PostCreatedImplCopyWith<_$PostCreatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CommentCreatedImplCopyWith<$Res> {
+  factory _$$CommentCreatedImplCopyWith(_$CommentCreatedImpl value,
+          $Res Function(_$CommentCreatedImpl) then) =
+      __$$CommentCreatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CommentDTO comment, int index});
+
+  $CommentDTOCopyWith<$Res> get comment;
+}
+
+/// @nodoc
+class __$$CommentCreatedImplCopyWithImpl<$Res>
+    extends _$FeedEventCopyWithImpl<$Res, _$CommentCreatedImpl>
+    implements _$$CommentCreatedImplCopyWith<$Res> {
+  __$$CommentCreatedImplCopyWithImpl(
+      _$CommentCreatedImpl _value, $Res Function(_$CommentCreatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comment = null,
+    Object? index = null,
+  }) {
+    return _then(_$CommentCreatedImpl(
+      null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO,
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentDTOCopyWith<$Res> get comment {
+    return $CommentDTOCopyWith<$Res>(_value.comment, (value) {
+      return _then(_value.copyWith(comment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CommentCreatedImpl implements _CommentCreated {
+  const _$CommentCreatedImpl(this.comment, this.index);
+
+  @override
+  final CommentDTO comment;
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'FeedEvent.commentCreated(comment: $comment, index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CommentCreatedImpl &&
+            (identical(other.comment, comment) || other.comment == comment) &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, comment, index);
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CommentCreatedImplCopyWith<_$CommentCreatedImpl> get copyWith =>
+      __$$CommentCreatedImplCopyWithImpl<_$CommentCreatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? lastId) loaded,
+    required TResult Function(int index, ReactionDTO reaction) reacted,
+    required TResult Function(PostDTO post) postCreated,
+    required TResult Function(CommentDTO comment, int index) commentCreated,
+  }) {
+    return commentCreated(comment, index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? lastId)? loaded,
+    TResult? Function(int index, ReactionDTO reaction)? reacted,
+    TResult? Function(PostDTO post)? postCreated,
+    TResult? Function(CommentDTO comment, int index)? commentCreated,
+  }) {
+    return commentCreated?.call(comment, index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? lastId)? loaded,
+    TResult Function(int index, ReactionDTO reaction)? reacted,
+    TResult Function(PostDTO post)? postCreated,
+    TResult Function(CommentDTO comment, int index)? commentCreated,
+    required TResult orElse(),
+  }) {
+    if (commentCreated != null) {
+      return commentCreated(comment, index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Reacted value) reacted,
+    required TResult Function(_PostCreated value) postCreated,
+    required TResult Function(_CommentCreated value) commentCreated,
+  }) {
+    return commentCreated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Reacted value)? reacted,
+    TResult? Function(_PostCreated value)? postCreated,
+    TResult? Function(_CommentCreated value)? commentCreated,
+  }) {
+    return commentCreated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Reacted value)? reacted,
+    TResult Function(_PostCreated value)? postCreated,
+    TResult Function(_CommentCreated value)? commentCreated,
+    required TResult orElse(),
+  }) {
+    if (commentCreated != null) {
+      return commentCreated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CommentCreated implements FeedEvent {
+  const factory _CommentCreated(final CommentDTO comment, final int index) =
+      _$CommentCreatedImpl;
+
+  CommentDTO get comment;
+  int get index;
+
+  /// Create a copy of FeedEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CommentCreatedImplCopyWith<_$CommentCreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

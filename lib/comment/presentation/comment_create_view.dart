@@ -8,10 +8,16 @@ import 'package:test_appifylab/core/presentation/styles.dart';
 import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
 
 class CommentCreateView extends StatefulWidget {
-  const CommentCreateView({super.key, required this.post});
+  const CommentCreateView({
+    super.key,
+    required this.post,
+    required this.focusNode,
+    required this.postIndex,
+  });
 
   final PostDTO post;
-
+  final FocusNode focusNode;
+  final int postIndex;
   @override
   State<CommentCreateView> createState() => _CommentCreateViewState();
 }
@@ -38,6 +44,7 @@ class _CommentCreateViewState extends State<CommentCreateView> {
           padding: const EdgeInsets.all(25),
           child: TextFormField(
             controller: _controller,
+            focusNode: widget.focusNode,
             onChanged: (value) {
               context
                   .read<CommentCreateBloc>()
@@ -61,7 +68,7 @@ class _CommentCreateViewState extends State<CommentCreateView> {
                       .add(CommentCreateEvent.submitted(
                         widget.post.id!,
                         widget.post.uid!,
-                        null,
+                        widget.postIndex,
                       ));
                 },
                 child: Container(

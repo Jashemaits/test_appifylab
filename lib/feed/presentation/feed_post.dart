@@ -211,7 +211,10 @@ class FeedPost extends StatelessWidget {
                 ),
                 TextButton.icon(
                   onPressed: () {
-                    context.pushRoute(CommentsRoute(post: post));
+                    context.pushRoute(CommentsRoute(
+                      post: post,
+                      postIndex: index,
+                    ));
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,

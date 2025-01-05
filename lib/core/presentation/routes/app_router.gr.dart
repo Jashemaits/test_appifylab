@@ -15,12 +15,14 @@ class CommentsRoute extends PageRouteInfo<CommentsRouteArgs> {
   CommentsRoute({
     Key? key,
     required PostDTO post,
+    required int postIndex,
     List<PageRouteInfo>? children,
   }) : super(
           CommentsRoute.name,
           args: CommentsRouteArgs(
             key: key,
             post: post,
+            postIndex: postIndex,
           ),
           initialChildren: children,
         );
@@ -34,6 +36,7 @@ class CommentsRoute extends PageRouteInfo<CommentsRouteArgs> {
       return CommentsPage(
         key: args.key,
         post: args.post,
+        postIndex: args.postIndex,
       );
     },
   );
@@ -43,15 +46,18 @@ class CommentsRouteArgs {
   const CommentsRouteArgs({
     this.key,
     required this.post,
+    required this.postIndex,
   });
 
   final Key? key;
 
   final PostDTO post;
 
+  final int postIndex;
+
   @override
   String toString() {
-    return 'CommentsRouteArgs{key: $key, post: $post}';
+    return 'CommentsRouteArgs{key: $key, post: $post, postIndex: $postIndex}';
   }
 }
 

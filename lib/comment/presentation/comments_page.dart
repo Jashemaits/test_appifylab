@@ -11,25 +11,40 @@ import 'package:test_appifylab/feed/infrastructure/dtos/post_dto.dart';
 import 'package:test_appifylab/feed/presentation/post_reactions.dart';
 
 @RoutePage()
-class CommentsPage extends StatelessWidget {
+class CommentsPage extends StatefulWidget {
   const CommentsPage({
     super.key,
     required this.post,
+    required this.postIndex,
   });
 
   final PostDTO post;
+  final int postIndex;
+
+  @override
+  State<CommentsPage> createState() => _CommentsPageState();
+}
+
+class _CommentsPageState extends State<CommentsPage> {
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              CommentsBloc(di())..add(CommentsEvent.loaded(post.id!, null)),
+          create: (context) => CommentsBloc(di())
+            ..add(CommentsEvent.loaded(widget.post.id!, null)),
         ),
         BlocProvider(
           create: (context) =>
-              CommentCreateBloc(di(), context.read<CommentsBloc>()),
+              CommentCreateBloc(di(), context.read<CommentsBloc>(), di()),
         ),
       ],
       child: Builder(builder: (context) {
@@ -39,9 +54,9 @@ class CommentsPage extends StatelessWidget {
               padding: const EdgeInsets.all(25),
               child: Column(
                 children: [
-                  PostReactions(post: post),
+                  PostReactions(post: widget.post),
                   35.vGap,
-                  CommentListView(post: post),
+                  CommentListView(post: widget.post),
                 ],
               ),
             ),
@@ -49,7 +64,11 @@ class CommentsPage extends StatelessWidget {
               bottom: MediaQuery.of(context).viewInsets.bottom,
               left: 0,
               right: 0,
-              child: CommentCreateView(post: post),
+              child: CommentCreateView(
+                post: widget.post,
+                focusNode: _focusNode,
+                postIndex: widget.postIndex,
+              ),
             ),
           ],
         );

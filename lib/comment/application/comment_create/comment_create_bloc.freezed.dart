@@ -19,20 +19,23 @@ mixin _$CommentCreateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) commentTextChanged,
-    required TResult Function(int feedId, int feedUserId, int? parentId)
+    required TResult Function(int feedId, int feedUserId, int postIndex)
         submitted,
+    required TResult Function(CommentDTO? parentComment) parentCommentChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? commentTextChanged,
-    TResult? Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult? Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult? Function(CommentDTO? parentComment)? parentCommentChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? commentTextChanged,
-    TResult Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult Function(CommentDTO? parentComment)? parentCommentChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$CommentCreateEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_CommentTextChanged value) commentTextChanged,
     required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ParentCommentChanged value) parentCommentChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CommentTextChanged value)? commentTextChanged,
     TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ParentCommentChanged value)? parentCommentChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CommentTextChanged value)? commentTextChanged,
     TResult Function(_Submitted value)? submitted,
+    TResult Function(_ParentCommentChanged value)? parentCommentChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,8 +154,9 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) commentTextChanged,
-    required TResult Function(int feedId, int feedUserId, int? parentId)
+    required TResult Function(int feedId, int feedUserId, int postIndex)
         submitted,
+    required TResult Function(CommentDTO? parentComment) parentCommentChanged,
   }) {
     return commentTextChanged(value);
   }
@@ -158,7 +165,8 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? commentTextChanged,
-    TResult? Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult? Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult? Function(CommentDTO? parentComment)? parentCommentChanged,
   }) {
     return commentTextChanged?.call(value);
   }
@@ -167,7 +175,8 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? commentTextChanged,
-    TResult Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult Function(CommentDTO? parentComment)? parentCommentChanged,
     required TResult orElse(),
   }) {
     if (commentTextChanged != null) {
@@ -181,6 +190,7 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_CommentTextChanged value) commentTextChanged,
     required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ParentCommentChanged value) parentCommentChanged,
   }) {
     return commentTextChanged(this);
   }
@@ -190,6 +200,7 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CommentTextChanged value)? commentTextChanged,
     TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ParentCommentChanged value)? parentCommentChanged,
   }) {
     return commentTextChanged?.call(this);
   }
@@ -199,6 +210,7 @@ class _$CommentTextChangedImpl implements _CommentTextChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CommentTextChanged value)? commentTextChanged,
     TResult Function(_Submitted value)? submitted,
+    TResult Function(_ParentCommentChanged value)? parentCommentChanged,
     required TResult orElse(),
   }) {
     if (commentTextChanged != null) {
@@ -227,7 +239,7 @@ abstract class _$$SubmittedImplCopyWith<$Res> {
           _$SubmittedImpl value, $Res Function(_$SubmittedImpl) then) =
       __$$SubmittedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int feedId, int feedUserId, int? parentId});
+  $Res call({int feedId, int feedUserId, int postIndex});
 }
 
 /// @nodoc
@@ -245,7 +257,7 @@ class __$$SubmittedImplCopyWithImpl<$Res>
   $Res call({
     Object? feedId = null,
     Object? feedUserId = null,
-    Object? parentId = freezed,
+    Object? postIndex = null,
   }) {
     return _then(_$SubmittedImpl(
       null == feedId
@@ -256,10 +268,10 @@ class __$$SubmittedImplCopyWithImpl<$Res>
           ? _value.feedUserId
           : feedUserId // ignore: cast_nullable_to_non_nullable
               as int,
-      freezed == parentId
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      null == postIndex
+          ? _value.postIndex
+          : postIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -267,18 +279,18 @@ class __$$SubmittedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SubmittedImpl implements _Submitted {
-  const _$SubmittedImpl(this.feedId, this.feedUserId, this.parentId);
+  const _$SubmittedImpl(this.feedId, this.feedUserId, this.postIndex);
 
   @override
   final int feedId;
   @override
   final int feedUserId;
   @override
-  final int? parentId;
+  final int postIndex;
 
   @override
   String toString() {
-    return 'CommentCreateEvent.submitted(feedId: $feedId, feedUserId: $feedUserId, parentId: $parentId)';
+    return 'CommentCreateEvent.submitted(feedId: $feedId, feedUserId: $feedUserId, postIndex: $postIndex)';
   }
 
   @override
@@ -289,12 +301,12 @@ class _$SubmittedImpl implements _Submitted {
             (identical(other.feedId, feedId) || other.feedId == feedId) &&
             (identical(other.feedUserId, feedUserId) ||
                 other.feedUserId == feedUserId) &&
-            (identical(other.parentId, parentId) ||
-                other.parentId == parentId));
+            (identical(other.postIndex, postIndex) ||
+                other.postIndex == postIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, feedId, feedUserId, parentId);
+  int get hashCode => Object.hash(runtimeType, feedId, feedUserId, postIndex);
 
   /// Create a copy of CommentCreateEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -308,30 +320,33 @@ class _$SubmittedImpl implements _Submitted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String value) commentTextChanged,
-    required TResult Function(int feedId, int feedUserId, int? parentId)
+    required TResult Function(int feedId, int feedUserId, int postIndex)
         submitted,
+    required TResult Function(CommentDTO? parentComment) parentCommentChanged,
   }) {
-    return submitted(feedId, feedUserId, parentId);
+    return submitted(feedId, feedUserId, postIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? commentTextChanged,
-    TResult? Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult? Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult? Function(CommentDTO? parentComment)? parentCommentChanged,
   }) {
-    return submitted?.call(feedId, feedUserId, parentId);
+    return submitted?.call(feedId, feedUserId, postIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? commentTextChanged,
-    TResult Function(int feedId, int feedUserId, int? parentId)? submitted,
+    TResult Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult Function(CommentDTO? parentComment)? parentCommentChanged,
     required TResult orElse(),
   }) {
     if (submitted != null) {
-      return submitted(feedId, feedUserId, parentId);
+      return submitted(feedId, feedUserId, postIndex);
     }
     return orElse();
   }
@@ -341,6 +356,7 @@ class _$SubmittedImpl implements _Submitted {
   TResult map<TResult extends Object?>({
     required TResult Function(_CommentTextChanged value) commentTextChanged,
     required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ParentCommentChanged value) parentCommentChanged,
   }) {
     return submitted(this);
   }
@@ -350,6 +366,7 @@ class _$SubmittedImpl implements _Submitted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CommentTextChanged value)? commentTextChanged,
     TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ParentCommentChanged value)? parentCommentChanged,
   }) {
     return submitted?.call(this);
   }
@@ -359,6 +376,7 @@ class _$SubmittedImpl implements _Submitted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CommentTextChanged value)? commentTextChanged,
     TResult Function(_Submitted value)? submitted,
+    TResult Function(_ParentCommentChanged value)? parentCommentChanged,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -370,12 +388,12 @@ class _$SubmittedImpl implements _Submitted {
 
 abstract class _Submitted implements CommentCreateEvent {
   const factory _Submitted(
-          final int feedId, final int feedUserId, final int? parentId) =
+          final int feedId, final int feedUserId, final int postIndex) =
       _$SubmittedImpl;
 
   int get feedId;
   int get feedUserId;
-  int? get parentId;
+  int get postIndex;
 
   /// Create a copy of CommentCreateEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -385,9 +403,177 @@ abstract class _Submitted implements CommentCreateEvent {
 }
 
 /// @nodoc
+abstract class _$$ParentCommentChangedImplCopyWith<$Res> {
+  factory _$$ParentCommentChangedImplCopyWith(_$ParentCommentChangedImpl value,
+          $Res Function(_$ParentCommentChangedImpl) then) =
+      __$$ParentCommentChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CommentDTO? parentComment});
+
+  $CommentDTOCopyWith<$Res>? get parentComment;
+}
+
+/// @nodoc
+class __$$ParentCommentChangedImplCopyWithImpl<$Res>
+    extends _$CommentCreateEventCopyWithImpl<$Res, _$ParentCommentChangedImpl>
+    implements _$$ParentCommentChangedImplCopyWith<$Res> {
+  __$$ParentCommentChangedImplCopyWithImpl(_$ParentCommentChangedImpl _value,
+      $Res Function(_$ParentCommentChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CommentCreateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? parentComment = freezed,
+  }) {
+    return _then(_$ParentCommentChangedImpl(
+      freezed == parentComment
+          ? _value.parentComment
+          : parentComment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO?,
+    ));
+  }
+
+  /// Create a copy of CommentCreateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentDTOCopyWith<$Res>? get parentComment {
+    if (_value.parentComment == null) {
+      return null;
+    }
+
+    return $CommentDTOCopyWith<$Res>(_value.parentComment!, (value) {
+      return _then(_value.copyWith(parentComment: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ParentCommentChangedImpl implements _ParentCommentChanged {
+  const _$ParentCommentChangedImpl(this.parentComment);
+
+  @override
+  final CommentDTO? parentComment;
+
+  @override
+  String toString() {
+    return 'CommentCreateEvent.parentCommentChanged(parentComment: $parentComment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ParentCommentChangedImpl &&
+            (identical(other.parentComment, parentComment) ||
+                other.parentComment == parentComment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, parentComment);
+
+  /// Create a copy of CommentCreateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ParentCommentChangedImplCopyWith<_$ParentCommentChangedImpl>
+      get copyWith =>
+          __$$ParentCommentChangedImplCopyWithImpl<_$ParentCommentChangedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) commentTextChanged,
+    required TResult Function(int feedId, int feedUserId, int postIndex)
+        submitted,
+    required TResult Function(CommentDTO? parentComment) parentCommentChanged,
+  }) {
+    return parentCommentChanged(parentComment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? commentTextChanged,
+    TResult? Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult? Function(CommentDTO? parentComment)? parentCommentChanged,
+  }) {
+    return parentCommentChanged?.call(parentComment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? commentTextChanged,
+    TResult Function(int feedId, int feedUserId, int postIndex)? submitted,
+    TResult Function(CommentDTO? parentComment)? parentCommentChanged,
+    required TResult orElse(),
+  }) {
+    if (parentCommentChanged != null) {
+      return parentCommentChanged(parentComment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CommentTextChanged value) commentTextChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_ParentCommentChanged value) parentCommentChanged,
+  }) {
+    return parentCommentChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CommentTextChanged value)? commentTextChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_ParentCommentChanged value)? parentCommentChanged,
+  }) {
+    return parentCommentChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CommentTextChanged value)? commentTextChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_ParentCommentChanged value)? parentCommentChanged,
+    required TResult orElse(),
+  }) {
+    if (parentCommentChanged != null) {
+      return parentCommentChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ParentCommentChanged implements CommentCreateEvent {
+  const factory _ParentCommentChanged(final CommentDTO? parentComment) =
+      _$ParentCommentChangedImpl;
+
+  CommentDTO? get parentComment;
+
+  /// Create a copy of CommentCreateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ParentCommentChangedImplCopyWith<_$ParentCommentChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CommentCreateState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String get commentText => throw _privateConstructorUsedError;
+  CommentDTO? get parentComment => throw _privateConstructorUsedError;
   AppException? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of CommentCreateState
@@ -404,7 +590,12 @@ abstract class $CommentCreateStateCopyWith<$Res> {
       _$CommentCreateStateCopyWithImpl<$Res, CommentCreateState>;
   @useResult
   $Res call(
-      {FormzSubmissionStatus status, String commentText, AppException? error});
+      {FormzSubmissionStatus status,
+      String commentText,
+      CommentDTO? parentComment,
+      AppException? error});
+
+  $CommentDTOCopyWith<$Res>? get parentComment;
 }
 
 /// @nodoc
@@ -424,6 +615,7 @@ class _$CommentCreateStateCopyWithImpl<$Res, $Val extends CommentCreateState>
   $Res call({
     Object? status = null,
     Object? commentText = null,
+    Object? parentComment = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -435,11 +627,29 @@ class _$CommentCreateStateCopyWithImpl<$Res, $Val extends CommentCreateState>
           ? _value.commentText
           : commentText // ignore: cast_nullable_to_non_nullable
               as String,
+      parentComment: freezed == parentComment
+          ? _value.parentComment
+          : parentComment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as AppException?,
     ) as $Val);
+  }
+
+  /// Create a copy of CommentCreateState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CommentDTOCopyWith<$Res>? get parentComment {
+    if (_value.parentComment == null) {
+      return null;
+    }
+
+    return $CommentDTOCopyWith<$Res>(_value.parentComment!, (value) {
+      return _then(_value.copyWith(parentComment: value) as $Val);
+    });
   }
 }
 
@@ -452,7 +662,13 @@ abstract class _$$CommentCreateStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {FormzSubmissionStatus status, String commentText, AppException? error});
+      {FormzSubmissionStatus status,
+      String commentText,
+      CommentDTO? parentComment,
+      AppException? error});
+
+  @override
+  $CommentDTOCopyWith<$Res>? get parentComment;
 }
 
 /// @nodoc
@@ -470,6 +686,7 @@ class __$$CommentCreateStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? commentText = null,
+    Object? parentComment = freezed,
     Object? error = freezed,
   }) {
     return _then(_$CommentCreateStateImpl(
@@ -481,6 +698,10 @@ class __$$CommentCreateStateImplCopyWithImpl<$Res>
           ? _value.commentText
           : commentText // ignore: cast_nullable_to_non_nullable
               as String,
+      parentComment: freezed == parentComment
+          ? _value.parentComment
+          : parentComment // ignore: cast_nullable_to_non_nullable
+              as CommentDTO?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -495,6 +716,7 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
   _$CommentCreateStateImpl(
       {this.status = FormzSubmissionStatus.initial,
       this.commentText = "",
+      this.parentComment,
       this.error});
 
   @override
@@ -504,11 +726,13 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
   @JsonKey()
   final String commentText;
   @override
+  final CommentDTO? parentComment;
+  @override
   final AppException? error;
 
   @override
   String toString() {
-    return 'CommentCreateState(status: $status, commentText: $commentText, error: $error)';
+    return 'CommentCreateState(status: $status, commentText: $commentText, parentComment: $parentComment, error: $error)';
   }
 
   @override
@@ -519,11 +743,14 @@ class _$CommentCreateStateImpl implements _CommentCreateState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.commentText, commentText) ||
                 other.commentText == commentText) &&
+            (identical(other.parentComment, parentComment) ||
+                other.parentComment == parentComment) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, commentText, error);
+  int get hashCode =>
+      Object.hash(runtimeType, status, commentText, parentComment, error);
 
   /// Create a copy of CommentCreateState
   /// with the given fields replaced by the non-null parameter values.
@@ -539,12 +766,15 @@ abstract class _CommentCreateState implements CommentCreateState {
   factory _CommentCreateState(
       {final FormzSubmissionStatus status,
       final String commentText,
+      final CommentDTO? parentComment,
       final AppException? error}) = _$CommentCreateStateImpl;
 
   @override
   FormzSubmissionStatus get status;
   @override
   String get commentText;
+  @override
+  CommentDTO? get parentComment;
   @override
   AppException? get error;
 
